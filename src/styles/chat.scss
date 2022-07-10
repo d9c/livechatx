@@ -1,0 +1,126 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 50%;
+  height: 90%;
+}
+
+.chat-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #38314e;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px;
+  height: 60px;
+
+  span {
+    font-size: 14px;
+    color: #ffffff;
+  }
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  height: 100%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgb(245, 245, 245);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #8e7cc3;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #554a75;
+  }
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.sent {
+  justify-content: right;
+
+  .content {
+    background: #8e7cc3;
+  }
+}
+
+.received {
+  justify-content: left;
+
+  .content {
+    background: #554a75;
+  }
+}
+
+.chat-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 50px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    input {
+      border: 1px solid #cccccc;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      color: #181818;
+      border-radius: 5px;
+      padding: 5px;
+      width: 200px;
+      height: 35px;
+
+      &:focus {
+        outline: none;
+        border: 1px solid #8e7cc3;
+        transition: 100ms ease-in-out;
+      }
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #8e7cc3;
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+
+      width: 30px;
+      height: 30px;
+
+      &:hover {
+        opacity: 80%;
+        transition: 100ms ease-in-out;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

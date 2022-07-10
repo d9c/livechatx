@@ -1,0 +1,34 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content {
+  border-radius: 5px;
+  padding: 7px;
+
+  span {
+    font-size: 14px;
+    color: #ffffff;
+    word-break: break-all;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 5px;
+}
+
+.time {
+  font-size: 14px;
+  color: #181818;
+}
+
+.author {
+  font-size: 14px;
+  font-weight: 500;
+  color: #181818;
+}
