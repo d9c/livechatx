@@ -5,10 +5,12 @@ import { JoinRoom } from "./components/JoinRoom";
 
 import { ChatContext } from "./contexts/ChatContext";
 
-import "./styles/app.scss";
+import * as Styled from "./App.styles";
 
 export const App = () => {
   const { showChat } = useContext(ChatContext);
 
-  return <div className="app">{showChat ? <Chat /> : <JoinRoom />}</div>;
+  return (
+    <Styled.Container>{showChat ? <Chat /> : <JoinRoom />}</Styled.Container>
+  );
 };

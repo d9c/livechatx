@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 
-import { Message } from "./Message";
+import { Message } from "../Message";
 
-import { ChatContext } from "../contexts/ChatContext";
+import { ChatContext } from "../../contexts/ChatContext";
 
-import "../styles/chat.scss";
+import * as Styled from "./styles";
 
 export const Chat = () => {
   const { socket, username, room } = useContext(ChatContext);
@@ -53,45 +53,41 @@ export const Chat = () => {
   };
 
   return (
-    <div className="chat">
-      <div className="chat-header">
+    <Styled.Container>
+      <Styled.ChatHeader>
         <span>Username: {username}</span>
         <span>Room: {room}</span>
-      </div>
-      <div className="chat-body">
+      </Styled.ChatHeader>
+      <Styled.ChatBody>
         {messageList.map((msg) => (
-          <div
-            className={`row ${msg.author === username ? "sent" : "received"}`}
-          >
+          <Styled.MessageRow sent={msg.author === username ? true : false}>
             <Message
               message={msg.message}
               time={msg.time}
               author={msg.author}
+              sent={msg.author === username ? true : false}
             />
-          </div>
+          </Styled.MessageRow>
         ))}
-        <div
-          ref={divRef}
-          style={{ visibility: "hidden", width: "0", height: "0" }}
-        />
-      </div>
-      <div className="chat-footer">
+        <div ref={divRef} style={{ visibility: "hidden" }} />
+      </Styled.ChatBody>
+      <Styled.ChatFooter>
         <form onSubmit={handleSubmit}>
-          <div>
-            <input
+          <Styled.WriteMessage>
+            <Styled.TextInput
               type="text"
               placeholder="Message"
               value={currentMessage}
               onChange={(e) => setCurrentMessage(e.target.value)}
             />
-            <button type="submit">
+            <Styled.Button type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="#ffffff" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
               </svg>
-            </button>
-          </div>
+            </Styled.Button>
+          </Styled.WriteMessage>
         </form>
-      </div>
-    </div>
+      </Styled.ChatFooter>
+    </Styled.Container>
   );
 };
