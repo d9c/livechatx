@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { ChatContext } from "../../contexts/ChatContext";
 
-import * as Styled from "./styles";
+import * as C from "./styles";
 
 export const JoinRoom = () => {
   const { socket, setShowChat, setUsername, room, setRoom } =
@@ -15,22 +15,20 @@ export const JoinRoom = () => {
   };
 
   return (
-    <Styled.Form onSubmit={handleSubmit}>
-      <Styled.TextInput
+    <C.Form onSubmit={handleSubmit}>
+      <C.TextInput
         type="text"
         placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-      <Styled.TextInput
+      <C.TextInput
         type="text"
         placeholder="Room ID"
         onChange={(e) => setRoom(e.target.value)}
         required
       />
-      <Styled.Button type="submit">
-        <span>Join</span>
-      </Styled.Button>
-    </Styled.Form>
+      <C.Button type="submit">Join</C.Button>
+    </C.Form>
   );
 };

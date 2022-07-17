@@ -1,17 +1,17 @@
 import React from "react";
 
-import * as Styled from "./styles";
+import * as C from "./styles";
 
 export const Message = ({ message, time, author, sent }) => {
   return (
-    <Styled.Container>
-      <Styled.MessageContent sent={sent}>
+    <C.Message>
+      <C.Content sent={sent}>
         <span>{message}</span>
-      </Styled.MessageContent>
-      <Styled.MessageInfo>
-        <Styled.MessageTime>{time}</Styled.MessageTime>
-        <Styled.MessageAuthor>{author}</Styled.MessageAuthor>
-      </Styled.MessageInfo>
-    </Styled.Container>
+      </C.Content>
+      <C.Info>
+        <C.Time>{time}</C.Time>
+        <C.Author>{author}</C.Author>
+      </C.Info>
+    </C.Message>
   );
 };

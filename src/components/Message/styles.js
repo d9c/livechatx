@@ -1,40 +1,41 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Message = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
 `;
 
-export const MessageContent = styled.div`
-  background: ${(props) => (props.sent ? "#8e7cc3" : "#554a75")};
+export const Content = styled.div`
+  background-color: ${(props) => (props.sent ? "#46464b" : "#28282d")};
   border-radius: 5px;
+
   padding: 7px;
 
   span {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     color: #ffffff;
     word-break: break-all;
   }
 `;
 
-export const MessageInfo = styled.div`
+export const Info = styled.div`
   display: flex;
   justify-content: right;
   align-items: center;
   gap: 5px;
 `;
 
-export const MessageTime = styled.span`
-  font-family: "Roboto", sans-serif;
+export const Time = styled.span`
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  color: #181818;
+  color: #ffffff;
 `;
 
-export const MessageAuthor = styled.span`
-  font-family: "Roboto", sans-serif;
+export const Author = styled.span`
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  font-weight: 500;
-  color: #181818;
+  font-weight: 700;
+  color: #ffffff;
 `;
