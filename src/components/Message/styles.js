@@ -13,7 +13,7 @@ export const Content = styled.div`
   padding: 7px;
 
   span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     color: #ffffff;
     word-break: break-all;
@@ -28,13 +28,13 @@ export const Info = styled.div`
 `;
 
 export const Time = styled.span`
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #ffffff;
 `;
 
 export const Author = styled.span`
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: #ffffff;
