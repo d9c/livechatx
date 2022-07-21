@@ -7,7 +7,7 @@ export const Form = styled.form`
 `;
 
 export const TextInput = styled.input`
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #ffffff;
 
@@ -31,7 +31,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
 
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #ffffff;
 

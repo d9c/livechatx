@@ -32,7 +32,7 @@ export const Header = styled.div`
   padding: 10px;
 
   span {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     color: #ffffff;
   }
@@ -88,7 +88,7 @@ export const WriteMessage = styled.div`
 `;
 
 export const TextInput = styled.input`
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #ffffff;
 
