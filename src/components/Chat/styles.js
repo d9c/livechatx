@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-// Body Background:  rgb(30, 30, 35) / #1e1e23
-// Chat Body:        rgb(50, 50, 55) / #323237
-// Header:           rgb(40, 40, 45) / #28282d
-// Sent Message:     rgb(70, 70, 75) / #46464b
-// Received Message: rgb(40, 40, 45) / #28282d
-// Border:           rgb(90, 90, 95) / #5a5a5f
-// Focus:            rgb(90, 90, 95) / #8cb4fa
+/*
+  Page background:          rgb(30, 30, 35) / #1e1e23
+  Chat body background:     rgb(50, 50, 55) / #323237
+  Header/Footer background: rgb(40, 40, 45) / #28282d
+  Sent message:             rgb(70, 70, 75) / #46464b
+  Received message:         rgb(40, 40, 45) / #28282d
+  Borders:                  rgb(90, 90, 95) / #5a5a5f
+  Focus:                    rgb(90, 90, 95) / #8cb4fa
+*/
 
 export const Chat = styled.div`
   display: flex;
