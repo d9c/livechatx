@@ -12,7 +12,6 @@ export const Chat = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: #323237;
   border: 1px solid #5a5a5f;
   border-radius: 5px;
 
@@ -44,10 +43,24 @@ export const Body = styled.div`
   flex-direction: column;
   gap: 10px;
 
+  background-color: #323237;
+
   height: 100%;
   padding: 10px;
 
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
+  }
 `;
 
 export const MessageRow = styled.div`
@@ -60,6 +73,8 @@ export const Footer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: #28282d;
 
   height: 50px;
   padding: 10px;
