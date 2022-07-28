@@ -67,6 +67,8 @@ export const Footer = styled.div`
   align-items: center;
 
   background-color: ${(props) => props.theme.main.secondary};
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 
   height: 50px;
   padding: 10px;
