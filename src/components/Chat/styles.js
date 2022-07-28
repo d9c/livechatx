@@ -1,20 +1,10 @@
 import styled from "styled-components";
 
-/*
-  Page background:          rgb(30, 30, 35) / #1e1e23
-  Chat body background:     rgb(50, 50, 55) / #323237
-  Header/Footer background: rgb(40, 40, 45) / #28282d
-  Sent message:             rgb(70, 70, 75) / #46464b
-  Received message:         rgb(40, 40, 45) / #28282d
-  Borders:                  rgb(90, 90, 95) / #5a5a5f
-  Focus:                    rgb(90, 90, 95) / #8cb4fa
-*/
-
-export const Chat = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  border: 1px solid #5a5a5f;
+  border: 1px solid ${(props) => props.theme.main.border};
   border-radius: 5px;
 
   width: 50%;
@@ -26,7 +16,7 @@ export const Header = styled.div`
   flex-direction: column;
   gap: 5px;
 
-  background-color: #28282d;
+  background-color: ${(props) => props.theme.main.secondary};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 
@@ -36,7 +26,7 @@ export const Header = styled.div`
   span {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: #ffffff;
+    color: ${(props) => props.theme.text.primary};
   }
 `;
 
@@ -45,7 +35,7 @@ export const Body = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  background-color: #323237;
+  background-color: ${(props) => props.theme.main.primary};
 
   height: 100%;
   padding: 10px;
@@ -76,7 +66,7 @@ export const Footer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #28282d;
+  background-color: ${(props) => props.theme.main.secondary};
 
   height: 50px;
   padding: 10px;
@@ -92,10 +82,10 @@ export const WriteMessage = styled.div`
 export const TextInput = styled.input`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.primary};
 
-  background-color: #1e1e23;
-  border: 1px solid #5a5a5f;
+  background-color: ${(props) => props.theme.main.background};
+  border: 1px solid ${(props) => props.theme.main.border};
   border-radius: 5px;
 
   width: 200px;
@@ -104,7 +94,7 @@ export const TextInput = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid #8cb4fa;
+    border: 1px solid ${(props) => props.theme.main.focus};
     transition: 100ms ease-in-out;
   }
 `;
@@ -114,7 +104,7 @@ export const SendButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #46464b;
+  background-color: ${(props) => props.theme.message.sent};
   border: none;
   border-radius: 5px;
 
@@ -124,12 +114,12 @@ export const SendButton = styled.button`
 
   cursor: pointer;
 
-  &:hover {
-    filter: brightness(115%);
-    transition: 100ms ease-in-out;
-  }
-
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    filter: brightness(80%);
+    transition: 100ms ease-in-out;
   }
 `;

@@ -1,41 +1,44 @@
 import styled from "styled-components";
 
-export const Message = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
 `;
 
-export const Content = styled.div`
-  background-color: ${(props) => (props.sent ? "#46464b" : "#28282d")};
-  border-radius: 5px;
+export const Row = styled.div`
+  display: flex;
+  justify-content: ${(props) => (props.sent ? "right" : "left")};
+`;
 
+export const Content = styled.div`
+  background-color: ${(props) =>
+    props.sent ? props.theme.message.sent : props.theme.message.received};
+  border-radius: 5px;
   padding: 7px;
 
   span {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: #ffffff;
+    color: ${(props) => props.theme.text.primary};
     word-break: break-all;
   }
 `;
 
 export const Info = styled.div`
   display: flex;
-  justify-content: right;
-  align-items: center;
   gap: 5px;
 `;
 
 export const Time = styled.span`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.primary};
 `;
 
 export const Author = styled.span`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.primary};
 `;

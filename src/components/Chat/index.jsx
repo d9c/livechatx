@@ -4,7 +4,7 @@ import { Message } from "../Message";
 
 import { ChatContext } from "../../contexts/ChatContext";
 
-import * as C from "./styles";
+import * as S from "./styles";
 
 export const Chat = () => {
   const { socket, username, room } = useContext(ChatContext);
@@ -53,41 +53,41 @@ export const Chat = () => {
   };
 
   return (
-    <C.Chat>
-      <C.Header>
+    <S.Container>
+      <S.Header>
         <span>Username: {username}</span>
         <span>Room: {room}</span>
-      </C.Header>
-      <C.Body>
+      </S.Header>
+      <S.Body>
         {messageList.map((msg) => (
-          <C.MessageRow sent={msg.author === username ? true : false}>
+          <S.MessageRow sent={msg.author === username ? true : false}>
             <Message
               message={msg.message}
               time={msg.time}
               author={msg.author}
               sent={msg.author === username ? true : false}
             />
-          </C.MessageRow>
+          </S.MessageRow>
         ))}
         <div ref={divRef} style={{ visibility: "hidden" }} />
-      </C.Body>
-      <C.Footer>
+      </S.Body>
+      <S.Footer>
         <form onSubmit={handleSubmit}>
-          <C.WriteMessage>
-            <C.TextInput
+          <S.WriteMessage>
+            <S.TextInput
               type="text"
               placeholder="Message"
               value={currentMessage}
               onChange={(e) => setCurrentMessage(e.target.value)}
             />
-            <C.SendButton type="submit">
+            <S.SendButton type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="#ffffff" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
               </svg>
-            </C.SendButton>
-          </C.WriteMessage>
+            </S.SendButton>
+          </S.WriteMessage>
         </form>
-      </C.Footer>
-    </C.Chat>
+      </S.Footer>
+    </S.Container>
   );
 };

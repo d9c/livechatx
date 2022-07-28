@@ -1,19 +1,21 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+export const Container = styled.div`
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const TextInput = styled.input`
+  background-color: ${(props) => props.theme.main.primary};
+  border: 1px solid ${(props) => props.theme.main.border};
+  border-radius: 5px;
+
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: #ffffff;
-
-  background-color: #323237;
-  border: 1px solid #5a5a5f;
-  border-radius: 5px;
+  color: ${(props) => props.theme.text.primary};
 
   width: 200px;
   height: 35px;
@@ -21,27 +23,31 @@ export const TextInput = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid #8cb4fa;
+    border: 1px solid ${(props) => props.theme.main.focus};
     transition: 100ms ease-in-out;
   }
 `;
 
 export const Button = styled.button`
-  background-color: #8cb4fa;
+  background-color: ${(props) => props.theme.main.focus};
   border: none;
   border-radius: 5px;
 
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.primary};
 
   width: 200px;
   height: 35px;
 
   cursor: pointer;
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
-    filter: brightness(115%);
+    filter: brightness(80%);
     transition: 100ms ease-in-out;
   }
 `;
