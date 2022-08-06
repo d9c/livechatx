@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
-import { ChatContext } from "../../contexts/ChatContext";
-
 import * as S from "./styles";
+
+import { ChatContext } from "../../contexts/ChatContext";
 
 export const JoinRoom = () => {
   const { socket, setShowChat, setUsername, room, setRoom } =

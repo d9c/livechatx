@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 
+import * as S from "./App.styles";
+
 import { Chat } from "./components/Chat";
 import { JoinRoom } from "./components/JoinRoom";
 
 import { ChatContext } from "./contexts/ChatContext";
-
-import * as S from "./App.styles";
 
 import { DarkTheme } from "./styles/themes/dark";
 import { GlobalStyle } from "./styles/global";

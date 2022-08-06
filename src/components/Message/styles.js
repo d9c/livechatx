@@ -13,14 +13,14 @@ export const Row = styled.div`
 
 export const Content = styled.div`
   background-color: ${(props) =>
-    props.sent ? props.theme.message.sent : props.theme.message.received};
+    props.sent ? props.theme.message.primary : props.theme.message.secondary};
   border-radius: 5px;
   padding: 7px;
 
   span {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: ${(props) => props.theme.text.primary};
+    color: ${(props) => props.theme.text};
     word-break: break-all;
   }
 `;
@@ -33,12 +33,12 @@ export const Info = styled.div`
 export const Time = styled.span`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: ${(props) => props.theme.text.primary};
+  color: ${(props) => props.theme.text};
 `;
 
 export const Author = styled.span`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: ${(props) => props.theme.text.primary};
+  color: ${(props) => props.theme.text};
 `;

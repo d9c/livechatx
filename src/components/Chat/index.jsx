@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 
+import * as S from "./styles";
+
 import { Message } from "../Message";
 
 import { ChatContext } from "../../contexts/ChatContext";
-
-import * as S from "./styles";
 
 export const Chat = () => {
   const { socket, username, room } = useContext(ChatContext);
@@ -55,8 +55,10 @@ export const Chat = () => {
   return (
     <S.Container>
       <S.Header>
-        <span>Username: {username}</span>
-        <span>Room: {room}</span>
+        <S.Room>
+          <span>Room:</span>
+          <S.RoomName>{room}</S.RoomName>
+        </S.Room>
       </S.Header>
       <S.Body>
         {messageList.map((msg) => (

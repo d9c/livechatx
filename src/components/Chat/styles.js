@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  border: 1px solid ${(props) => props.theme.main.border};
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 5px;
 
   width: 50%;
@@ -14,20 +14,37 @@ export const Container = styled.div`
 export const Header = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  justify-content: center;
 
-  background-color: ${(props) => props.theme.main.secondary};
+  background-color: ${(props) => props.theme.container.secondary};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 
   height: 60px;
   padding: 10px;
+`;
+
+export const Room = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 
   span {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    color: ${(props) => props.theme.text.primary};
+    font-size: 12px;
+    color: ${(props) => props.theme.text};
   }
+`;
+
+export const RoomName = styled.span`
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  color: ${(props) => props.theme.text};
+
+  background-color: ${(props) => props.theme.container.primary};
+  border-radius: 5px;
+
+  padding: 5px;
 `;
 
 export const Body = styled.div`
@@ -35,7 +52,7 @@ export const Body = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  background-color: ${(props) => props.theme.main.primary};
+  background-color: ${(props) => props.theme.container.primary};
 
   height: 100%;
   padding: 10px;
@@ -66,7 +83,7 @@ export const Footer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.main.secondary};
+  background-color: ${(props) => props.theme.container.primary};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
@@ -84,10 +101,10 @@ export const WriteMessage = styled.div`
 export const TextInput = styled.input`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: ${(props) => props.theme.text.primary};
+  color: ${(props) => props.theme.text};
 
-  background-color: ${(props) => props.theme.main.background};
-  border: 1px solid ${(props) => props.theme.main.border};
+  background-color: ${(props) => props.theme.container.secondary};
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 5px;
 
   width: 200px;
@@ -96,7 +113,7 @@ export const TextInput = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid ${(props) => props.theme.main.focus};
+    border: 1px solid ${(props) => props.theme.focus};
     transition: 100ms ease-in-out;
   }
 `;
@@ -106,7 +123,7 @@ export const SendButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.message.sent};
+  background-color: ${(props) => props.theme.message.primary};
   border: none;
   border-radius: 5px;
 
