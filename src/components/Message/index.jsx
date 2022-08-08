@@ -5,17 +5,11 @@ import * as S from "./styles";
 export const Message = ({ sent, message, time, author }) => {
   return (
     <S.Container>
-      <S.Row sent={sent}>
-        <S.Content sent={sent}>
-          <span>{message}</span>
-        </S.Content>
-      </S.Row>
-      <S.Row sent={sent}>
-        <S.Info>
-          <S.Time>{time}</S.Time>
-          <S.Author>{author}</S.Author>
-        </S.Info>
-      </S.Row>
+      <S.Content sent={sent}>
+        <S.Info sent={sent}>{author}</S.Info>
+        <S.Message>{message}</S.Message>
+        <S.Info sent={sent}>{time}</S.Info>
+      </S.Content>
     </S.Container>
   );
 };

@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const TextInput = styled.input`
   background-color: ${(props) => props.theme.container.secondary};
   border: 1px solid ${(props) => props.theme.border};
-  border-radius: 5px;
+  border-radius: 4px;
 
   font-family: "Roboto", sans-serif;
   font-size: 14px;
@@ -31,7 +31,7 @@ export const TextInput = styled.input`
 export const Button = styled.button`
   background-color: ${(props) => props.theme.focus};
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
 
   font-family: "Roboto", sans-serif;
   font-size: 14px;
