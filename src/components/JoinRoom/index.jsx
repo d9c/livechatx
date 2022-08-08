@@ -5,12 +5,19 @@ import * as S from "./styles";
 import { ChatContext } from "../../contexts/ChatContext";
 
 export const JoinRoom = () => {
-  const { socket, setShowChat, setUsername, room, setRoom } =
+  const { socket, username, setUsername, room, setRoom, setShowChat } =
     useContext(ChatContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await socket.emit("join_room", room);
+
+    const data = {
+      username: username,
+      room: room,
+    };
+
+    await socket.emit("join_room", data);
+
     setShowChat(true);
   };
 
@@ -25,7 +32,7 @@ export const JoinRoom = () => {
         />
         <S.TextInput
           type="text"
-          placeholder="Room ID"
+          placeholder="Room"
           onChange={(e) => setRoom(e.target.value)}
           required
         />

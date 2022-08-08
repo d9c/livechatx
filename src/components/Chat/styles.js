@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import { Box as MuiBox, Snackbar as MuiSnackbar } from "@mui/material";
 
-export const Container = styled.div`
+export const Container = styled(MuiBox).attrs({
+  sx: { boxShadow: 2 },
+})`
   display: flex;
   flex-direction: column;
 
   border: 1px solid ${(props) => props.theme.border};
-  border-radius: 5px;
+  border-radius: 4px;
 
   width: 50%;
   height: 90%;
@@ -17,8 +20,8 @@ export const Header = styled.div`
   justify-content: center;
 
   background-color: ${(props) => props.theme.container.secondary};
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 
   height: 60px;
   padding: 10px;
@@ -37,12 +40,16 @@ export const Room = styled.div`
 `;
 
 export const RoomName = styled.span`
+  text-align: center;
+
   font-family: "Roboto", sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 
-  background-color: ${(props) => props.theme.container.primary};
-  border-radius: 5px;
+  background-color: ${(props) => props.theme.focus};
+  border-radius: 4px;
+
+  min-width: 25px;
 
   padding: 5px;
 `;
@@ -84,8 +91,8 @@ export const Footer = styled.div`
   align-items: center;
 
   background-color: ${(props) => props.theme.container.primary};
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 
   height: 50px;
   padding: 10px;
@@ -105,7 +112,7 @@ export const TextInput = styled.input`
 
   background-color: ${(props) => props.theme.container.secondary};
   border: 1px solid ${(props) => props.theme.border};
-  border-radius: 5px;
+  border-radius: 4px;
 
   width: 200px;
   height: 35px;
@@ -125,7 +132,7 @@ export const SendButton = styled.button`
 
   background-color: ${(props) => props.theme.message.primary};
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
 
   width: 30px;
   height: 30px;
@@ -140,5 +147,17 @@ export const SendButton = styled.button`
   &:hover {
     filter: brightness(80%);
     transition: 100ms ease-in-out;
+  }
+`;
+
+export const Snackbar = styled(MuiSnackbar)`
+  && {
+    .MuiPaper-root {
+      background-color: #ffffff;
+    }
+    .MuiSnackbarContent-message {
+      font-family: "Roboto", sans-serif;
+      color: #000000;
+    }
   }
 `;

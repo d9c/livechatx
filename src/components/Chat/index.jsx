@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import moment from "moment";
 
 import * as S from "./styles";
 
@@ -11,14 +12,25 @@ export const Chat = () => {
 
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-
-  const divRef = useRef(null);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+  });
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setMessageList((prevMessageList) => [...prevMessageList, data]);
     });
-  }, [socket]);
+
+    socket.on("user_joined", (data) => {
+      setSnackbar({
+        open: true,
+        message: `${data} joined the room!`,
+      });
+    });
+  }, []);
+
+  const divRef = useRef(null);
 
   useEffect(() => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
@@ -32,7 +44,7 @@ export const Chat = () => {
         room: room,
         author: username,
         message: currentMessage,
-        time: getCurrentTime(),
+        time: moment().format("h:mm A"),
       };
 
       await socket.emit("send_message", messageData);
@@ -52,11 +64,19 @@ export const Chat = () => {
     return `${hours}:${minutes}`;
   };
 
+  const handleClose = (e, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbar({
+      open: false,
+      message: "",
+    });
+  };
+
   return (
     <S.Container>
       <S.Header>
         <S.Room>
-          <span>Room:</span>
+          <span>Room</span>
           <S.RoomName>{room}</S.RoomName>
         </S.Room>
       </S.Header>
@@ -90,6 +110,13 @@ export const Chat = () => {
           </S.WriteMessage>
         </form>
       </S.Footer>
+      <S.Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        message={snackbar.message}
+      />
     </S.Container>
   );
 };
