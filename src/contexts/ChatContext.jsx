@@ -3,7 +3,7 @@ import io from "socket.io-client";
 
 export const ChatContext = createContext({});
 
-const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://d9c-livechat-backend.herokuapp.com");
 
 export const ChatContextProvider = ({ children }) => {
   const [username, setUsername] = useState("");
