@@ -5,8 +5,10 @@ import * as S from "./App.styles";
 
 import { Chat } from "./components/Chat";
 import { JoinRoom } from "./components/JoinRoom";
+import { UserList } from "./components/UserList";
 
 import { ChatContext } from "./contexts/ChatContext";
+import { SnackbarContextProvider } from "./contexts/SnackbarContext";
 
 import { DarkTheme } from "./styles/themes/dark";
 import { GlobalStyle } from "./styles/global";
@@ -16,10 +18,19 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={DarkTheme}>
-      <S.Container>
-        {showChat ? <Chat /> : <JoinRoom />}
-        <GlobalStyle />
-      </S.Container>
+      <SnackbarContextProvider>
+        <S.Container>
+          {showChat ? (
+            <S.Content>
+              <Chat />
+              <UserList />
+            </S.Content>
+          ) : (
+            <JoinRoom />
+          )}
+        </S.Container>
+      </SnackbarContextProvider>
+      <GlobalStyle />
     </ThemeProvider>
   );
 };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box as MuiBox, Snackbar as MuiSnackbar } from "@mui/material";
+import { Box as MuiBox } from "@mui/material";
 
 export const Container = styled(MuiBox).attrs({
   sx: { boxShadow: 2 },
@@ -10,8 +10,8 @@ export const Container = styled(MuiBox).attrs({
   border: 1px solid ${(props) => props.theme.border};
   border-radius: 4px;
 
-  width: 50%;
-  height: 90%;
+  width: 640px;
+  height: 512px;
 `;
 
 export const Header = styled.div`
@@ -49,7 +49,8 @@ export const RoomName = styled.span`
   background-color: ${(props) => props.theme.focus};
   border-radius: 4px;
 
-  min-width: 25px;
+  min-width: 24px;
+  height: 24px;
 
   padding: 5px;
 `;
@@ -62,7 +63,7 @@ export const Body = styled.div`
   background-color: ${(props) => props.theme.container.primary};
 
   height: 100%;
-  padding: 10px;
+  padding: 10px 10px 0px 10px;
 
   overflow-y: scroll;
 
@@ -81,7 +82,7 @@ export const Body = styled.div`
 
 export const MessageRow = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.sent ? "right" : "left")};
+  justify-content: ${(props) => (props.isSent ? "right" : "left")};
   width: 100%;
 `;
 
@@ -136,7 +137,6 @@ export const SendButton = styled.button`
 
   width: 30px;
   height: 30px;
-  padding: 5px;
 
   cursor: pointer;
 
@@ -147,17 +147,5 @@ export const SendButton = styled.button`
   &:hover {
     filter: brightness(80%);
     transition: 100ms ease-in-out;
-  }
-`;
-
-export const Snackbar = styled(MuiSnackbar)`
-  && {
-    .MuiPaper-root {
-      background-color: #ffffff;
-    }
-    .MuiSnackbarContent-message {
-      font-family: "Roboto", sans-serif;
-      color: #000000;
-    }
   }
 `;

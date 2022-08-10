@@ -2,13 +2,13 @@ import React from "react";
 
 import * as S from "./styles";
 
-export const Message = ({ sent, message, time, author }) => {
+export const Message = ({ username, text, timestamp, isSent }) => {
   return (
     <S.Container>
-      <S.Content sent={sent}>
-        <S.Info sent={sent}>{author}</S.Info>
-        <S.Message>{message}</S.Message>
-        <S.Info sent={sent}>{time}</S.Info>
+      <S.Content isSent={isSent}>
+        <S.Info isSent={isSent}>{username}</S.Info>
+        <S.Message>{text}</S.Message>
+        <S.Info isSent={isSent}>{timestamp}</S.Info>
       </S.Content>
     </S.Container>
   );

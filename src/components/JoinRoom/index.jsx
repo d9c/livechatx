@@ -3,22 +3,30 @@ import React, { useContext } from "react";
 import * as S from "./styles";
 
 import { ChatContext } from "../../contexts/ChatContext";
+import { SnackbarContext } from "../../contexts/SnackbarContext";
 
 export const JoinRoom = () => {
   const { socket, username, setUsername, room, setRoom, setShowChat } =
     useContext(ChatContext);
+  const { setSnackbar } = useContext(SnackbarContext);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const data = {
-      username: username,
-      room: room,
-    };
+    socket.emit("joinRoom", { username, room });
 
-    await socket.emit("join_room", data);
+    socket.on("response", (data) => {
+      if (data.type === "success") {
+        setShowChat(true);
+      }
 
-    setShowChat(true);
+      if (data.type === "error") {
+        setSnackbar({
+          open: true,
+          message: data.message,
+        });
+      }
+    });
   };
 
   return (
@@ -27,12 +35,14 @@ export const JoinRoom = () => {
         <S.TextInput
           type="text"
           placeholder="Username"
+          maxLength={20}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
         <S.TextInput
           type="text"
           placeholder="Room"
+          maxLength={20}
           onChange={(e) => setRoom(e.target.value)}
           required
         />

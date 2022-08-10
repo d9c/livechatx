@@ -1,31 +1,36 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import moment from "moment";
+import { Send as SendIcon } from "@mui/icons-material";
 
 import * as S from "./styles";
 
 import { Message } from "../Message";
 
 import { ChatContext } from "../../contexts/ChatContext";
+import { SnackbarContext } from "../../contexts/SnackbarContext";
 
 export const Chat = () => {
-  const { socket, username, room } = useContext(ChatContext);
+  const { socket, room, username } = useContext(ChatContext);
+  const { setSnackbar } = useContext(SnackbarContext);
 
-  const [currentMessage, setCurrentMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: "",
-  });
 
   useEffect(() => {
-    socket.on("receive_message", (data) => {
+    socket.on("receiveMessage", (data) => {
       setMessageList((prevMessageList) => [...prevMessageList, data]);
     });
 
-    socket.on("user_joined", (data) => {
+    socket.on("userJoined", (data) => {
       setSnackbar({
         open: true,
-        message: `${data} joined the room!`,
+        message: `${data} joined the room.`,
+      });
+    });
+
+    socket.on("userLeft", (data) => {
+      setSnackbar({
+        open: true,
+        message: `${data} left the room.`,
       });
     });
   }, []);
@@ -36,34 +41,28 @@ export const Chat = () => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (currentMessage.trim()) {
-      const messageData = {
-        room: room,
-        author: username,
-        message: currentMessage,
-        time: moment().format("h:mm A"),
-      };
-
-      await socket.emit("send_message", messageData);
-
-      setMessageList((prevMessageList) => [...prevMessageList, messageData]);
-      setCurrentMessage("");
+    if (message.trim()) {
+      socket.emit("sendMessage", message);
+      setMessage("");
     } else {
-      setCurrentMessage("");
+      setMessage("");
       return false;
     }
   };
 
-  const handleClose = (e, reason) => {
-    if (reason === "clickaway") return;
-    setSnackbar({
-      open: false,
-      message: "",
-    });
-  };
+  const Messages = messageList.map((message) => (
+    <S.MessageRow isSent={message.username === username ? true : false}>
+      <Message
+        username={message.username}
+        text={message.text}
+        timestamp={message.timestamp}
+        isSent={message.username === username ? true : false}
+      />
+    </S.MessageRow>
+  ));
 
   return (
     <S.Container>
@@ -74,16 +73,7 @@ export const Chat = () => {
         </S.Room>
       </S.Header>
       <S.Body>
-        {messageList.map((msg) => (
-          <S.MessageRow sent={msg.author === username ? true : false}>
-            <Message
-              message={msg.message}
-              time={msg.time}
-              author={msg.author}
-              sent={msg.author === username ? true : false}
-            />
-          </S.MessageRow>
-        ))}
+        {Messages}
         <div ref={divRef} style={{ visibility: "hidden" }} />
       </S.Body>
       <S.Footer>
@@ -92,24 +82,15 @@ export const Chat = () => {
             <S.TextInput
               type="text"
               placeholder="Message"
-              value={currentMessage}
-              onChange={(e) => setCurrentMessage(e.target.value)}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
             <S.SendButton type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="#ffffff" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-              </svg>
+              <SendIcon sx={{ color: "#ffffff" }} />
             </S.SendButton>
           </S.WriteMessage>
         </form>
       </S.Footer>
-      <S.Snackbar
-        open={snackbar.open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-        message={snackbar.message}
-      />
     </S.Container>
   );
 };

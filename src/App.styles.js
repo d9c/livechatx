@@ -6,3 +6,8 @@ export const Container = styled.div`
   align-items: center;
   height: 100vh;
 `;
+
+export const Content = styled.div`
+  display: flex;
+  gap: 20px;
+`;

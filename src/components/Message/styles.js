@@ -15,7 +15,7 @@ export const Content = styled(MuiBox).attrs({
   gap: 8px;
 
   background-color: ${(props) =>
-    props.sent ? props.theme.message.primary : props.theme.message.secondary};
+    props.isSent ? props.theme.message.primary : props.theme.message.secondary};
   border-radius: 4px;
 
   padding: 7px;
