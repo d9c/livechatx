@@ -9,15 +9,12 @@ export const ChatContextProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [userList, setUserList] = useState([]);
-  const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
     socket.on("roomData", (data) => {
       setUserList(data);
     });
   }, []);
-
-  console.log("userList:", userList);
 
   return (
     <ChatContext.Provider
@@ -29,8 +26,6 @@ export const ChatContextProvider = ({ children }) => {
         setRoom,
         userList,
         setUserList,
-        showChat,
-        setShowChat,
       }}
     >
       {children}

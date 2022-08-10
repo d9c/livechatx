@@ -82,7 +82,7 @@ export const Body = styled.div`
 
 export const MessageRow = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.isSent ? "right" : "left")};
+  justify-content: ${(props) => (props.$isSent ? "right" : "left")};
   width: 100%;
 `;
 

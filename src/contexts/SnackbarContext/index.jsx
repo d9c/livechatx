@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import * as S from "./SnackbarContext.styles";
+import * as S from "./styles";
 
 export const SnackbarContext = createContext({});
 

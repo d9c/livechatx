@@ -53,13 +53,16 @@ export const Chat = () => {
     }
   };
 
-  const Messages = messageList.map((message) => (
-    <S.MessageRow isSent={message.username === username ? true : false}>
+  const Messages = messageList.map((message, index) => (
+    <S.MessageRow
+      key={index}
+      $isSent={message.username === username ? true : false}
+    >
       <Message
         username={message.username}
         text={message.text}
         timestamp={message.timestamp}
-        isSent={message.username === username ? true : false}
+        $isSent={message.username === username ? true : false}
       />
     </S.MessageRow>
   ));

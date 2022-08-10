@@ -5,8 +5,8 @@ import * as S from "./styles";
 import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
-export const JoinRoom = () => {
-  const { socket, username, setUsername, room, setRoom, setShowChat } =
+export const JoinRoom = ({ setShowChat }) => {
+  const { socket, username, setUsername, room, setRoom } =
     useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
@@ -16,11 +16,11 @@ export const JoinRoom = () => {
     socket.emit("joinRoom", { username, room });
 
     socket.on("response", (data) => {
-      if (data.type === "success") {
+      if (data.status === "success") {
         setShowChat(true);
       }
 
-      if (data.type === "error") {
+      if (data.status === "error") {
         setSnackbar({
           open: true,
           message: data.message,
@@ -36,6 +36,7 @@ export const JoinRoom = () => {
           type="text"
           placeholder="Username"
           maxLength={20}
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
@@ -43,6 +44,7 @@ export const JoinRoom = () => {
           type="text"
           placeholder="Room"
           maxLength={20}
+          value={room}
           onChange={(e) => setRoom(e.target.value)}
           required
         />
