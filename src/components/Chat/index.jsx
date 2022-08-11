@@ -44,13 +44,14 @@ export const Chat = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (message.trim()) {
-      socket.emit("sendMessage", message);
-      setMessage("");
-    } else {
+    if (!message.trim()) {
       setMessage("");
       return false;
     }
+
+    socket.emit("sendMessage", message);
+
+    setMessage("");
   };
 
   const Messages = messageList.map((message, index) => (
@@ -71,7 +72,7 @@ export const Chat = () => {
     <S.Container>
       <S.Header>
         <S.Room>
-          <span>Room</span>
+          <S.Span>Room</S.Span>
           <S.RoomName>{room}</S.RoomName>
         </S.Room>
       </S.Header>

@@ -31,12 +31,12 @@ export const Room = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+`;
 
-  span {
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    color: ${(props) => props.theme.text};
-  }
+export const Span = styled.span`
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  color: ${(props) => props.theme.text};
 `;
 
 export const RoomName = styled.span`
