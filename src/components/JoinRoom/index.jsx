@@ -13,6 +13,12 @@ export const JoinRoom = ({ setShowChat }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!username.trim() || !room.trim()) {
+      if (!username.trim()) setUsername("");
+      if (!room.trim()) setRoom("");
+      return false;
+    }
+
     socket.emit("joinRoom", { username, room });
 
     socket.on("response", (data) => {
@@ -38,7 +44,6 @@ export const JoinRoom = ({ setShowChat }) => {
           maxLength={20}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
         <S.TextInput
           type="text"
@@ -46,7 +51,6 @@ export const JoinRoom = ({ setShowChat }) => {
           maxLength={20}
           value={room}
           onChange={(e) => setRoom(e.target.value)}
-          required
         />
         <S.Button type="submit">Join</S.Button>
       </form>
