@@ -15,22 +15,18 @@ export const JoinRoom = ({ setShowChat }) => {
     if (!name.trim() || !room.trim()) {
       if (!name.trim()) setName("");
       if (!room.trim()) setRoom("");
-      return false;
+      return;
     }
 
-    socket.emit("joinRoom", { name, room });
-
-    socket.on("response", (data) => {
-      if (data.status === "success") {
-        setShowChat(true);
-      }
-
-      if (data.status === "error") {
-        setSnackbar({
+    socket.emit("joinRoom", { name, room }, (error) => {
+      if (error) {
+        return setSnackbar({
           open: true,
-          message: data.message,
+          message: error,
         });
       }
+
+      setShowChat(true);
     });
   };
 
@@ -39,7 +35,7 @@ export const JoinRoom = ({ setShowChat }) => {
       <form onSubmit={handleSubmit}>
         <S.TextInput
           type="text"
-          placeholder="Username"
+          placeholder="Name"
           maxLength={20}
           value={name}
           onChange={(e) => setName(e.target.value)}

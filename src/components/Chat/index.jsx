@@ -9,28 +9,28 @@ import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
 export const Chat = () => {
-  const { socket, room, name } = useContext(ChatContext);
+  const { socket, name, room } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const [message, setMessage] = useState("");
+  const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    socket.on("receiveMessage", (data) => {
-      setMessageList((prevMessageList) => [...prevMessageList, data]);
+    socket.on("receiveMessage", (message) => {
+      setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
 
-    socket.on("userJoined", (data) => {
+    socket.on("userJoined", (name) => {
       setSnackbar({
         open: true,
-        message: `${data} joined the room.`,
+        message: `${name} joined the room.`,
       });
     });
 
-    socket.on("userLeft", (data) => {
+    socket.on("userLeft", (name) => {
       setSnackbar({
         open: true,
-        message: `${data} left the room.`,
+        message: `${name} left the room.`,
       });
     });
   }, []);
@@ -44,14 +44,9 @@ export const Chat = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!message.trim()) {
-      setMessage("");
-      return false;
-    }
+    if (!currentMessage.trim()) return setCurrentMessage("");
 
-    socket.emit("sendMessage", message);
-
-    setMessage("");
+    socket.emit("sendMessage", currentMessage, () => setCurrentMessage(""));
   };
 
   const Messages = messageList.map((message, index) => (
@@ -83,8 +78,8 @@ export const Chat = () => {
             <S.TextInput
               type="text"
               placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={currentMessage}
+              onChange={(e) => setCurrentMessage(e.target.value)}
             />
             <S.SendButton type="submit">
               <SendIcon sx={{ color: "#ffffff" }} />
