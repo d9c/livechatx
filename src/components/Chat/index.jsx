@@ -33,6 +33,10 @@ export const Chat = () => {
         message: `${data} left the room.`,
       });
     });
+
+    return () => {
+      socket.emit("disconnect");
+    };
   }, []);
 
   const divRef = useRef(null);
