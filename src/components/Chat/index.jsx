@@ -33,17 +33,13 @@ export const Chat = () => {
         message: `${data} left the room.`,
       });
     });
-
-    return () => {
-      socket.emit("disconnect");
-    };
   }, []);
 
   const divRef = useRef(null);
 
   useEffect(() => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
-  });
+  }, [messageList]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,7 +78,7 @@ export const Chat = () => {
       </S.Header>
       <S.Body>
         {Messages}
-        <div ref={divRef} style={{ visibility: "hidden" }} />
+        <div ref={divRef} />
       </S.Body>
       <S.Footer>
         <form onSubmit={handleSubmit}>
