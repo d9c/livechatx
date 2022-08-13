@@ -10,7 +10,7 @@ export const UserList = () => {
   const Users = userList.map((user, index) => (
     <S.User key={index}>
       <S.Span style={{ color: "#80ff80" }}>•</S.Span>
-      <S.Span>{user.username}</S.Span>
+      <S.Span>{user.name}</S.Span>
     </S.User>
   ));
 

@@ -9,7 +9,7 @@ import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
 export const Chat = () => {
-  const { socket, room, username } = useContext(ChatContext);
+  const { socket, room, name } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
   const [message, setMessage] = useState("");
@@ -55,15 +55,12 @@ export const Chat = () => {
   };
 
   const Messages = messageList.map((message, index) => (
-    <S.MessageRow
-      key={index}
-      $isSent={message.username === username ? true : false}
-    >
+    <S.MessageRow key={index} $isSent={message.name === name ? true : false}>
       <Message
-        username={message.username}
+        name={message.name}
         text={message.text}
         timestamp={message.timestamp}
-        $isSent={message.username === username ? true : false}
+        $isSent={message.name === name ? true : false}
       />
     </S.MessageRow>
   ));

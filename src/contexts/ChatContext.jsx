@@ -6,7 +6,7 @@ export const ChatContext = createContext({});
 const socket = io.connect("https://d9c-livechat-backend.herokuapp.com");
 
 export const ChatContextProvider = ({ children }) => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [userList, setUserList] = useState([]);
 
@@ -20,8 +20,8 @@ export const ChatContextProvider = ({ children }) => {
     <ChatContext.Provider
       value={{
         socket,
-        username,
-        setUsername,
+        name,
+        setName,
         room,
         setRoom,
         userList,

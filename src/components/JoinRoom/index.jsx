@@ -6,20 +6,19 @@ import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
 export const JoinRoom = ({ setShowChat }) => {
-  const { socket, username, setUsername, room, setRoom } =
-    useContext(ChatContext);
+  const { socket, name, setName, room, setRoom } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username.trim() || !room.trim()) {
-      if (!username.trim()) setUsername("");
+    if (!name.trim() || !room.trim()) {
+      if (!name.trim()) setName("");
       if (!room.trim()) setRoom("");
       return false;
     }
 
-    socket.emit("joinRoom", { username, room });
+    socket.emit("joinRoom", { name, room });
 
     socket.on("response", (data) => {
       if (data.status === "success") {
@@ -42,8 +41,8 @@ export const JoinRoom = ({ setShowChat }) => {
           type="text"
           placeholder="Username"
           maxLength={20}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <S.TextInput
           type="text"
