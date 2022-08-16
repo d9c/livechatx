@@ -78,6 +78,7 @@ export const Chat = () => {
             <S.TextInput
               type="text"
               placeholder="Message"
+              maxLength={160}
               value={currentMessage}
               onChange={(e) => setCurrentMessage(e.target.value)}
             />
