@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://d9c.github.io/livechat-frontend",
+  "homepage": "https://d9c.github.io/livechat-frontend/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
