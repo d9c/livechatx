@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./styles";
 
 import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
-export const JoinRoom = ({ setShowChat }) => {
+export const JoinRoom = () => {
   const { socket, name, setName, room, setRoom } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ export const JoinRoom = ({ setShowChat }) => {
         });
       }
 
-      setShowChat(true);
+      navigate("/chat");
     });
   };
 

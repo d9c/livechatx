@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Send as SendIcon } from "@mui/icons-material";
 
 import * as S from "./styles";
@@ -15,7 +16,11 @@ export const Chat = () => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (!name || !room) navigate("/");
+
     socket.on("receiveMessage", (message) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
