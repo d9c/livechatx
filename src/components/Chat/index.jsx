@@ -17,9 +17,10 @@ export const Chat = () => {
   const [messageList, setMessageList] = useState([]);
 
   const navigate = useNavigate();
+  const divRef = useRef(null);
 
   useEffect(() => {
-    if (!name || !room) navigate("/");
+    if (!name || !room) return navigate("/");
 
     socket.on("receiveMessage", (message) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
@@ -40,8 +41,6 @@ export const Chat = () => {
     });
   }, []);
 
-  const divRef = useRef(null);
-
   useEffect(() => {
     divRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messageList]);
@@ -49,21 +48,15 @@ export const Chat = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!currentMessage.trim()) return setCurrentMessage("");
+    if (!currentMessage.trim()) {
+      setCurrentMessage("");
+      return false;
+    }
 
-    socket.emit("sendMessage", currentMessage, () => setCurrentMessage(""));
+    socket.emit("sendMessage", currentMessage, () => {
+      setCurrentMessage("");
+    });
   };
-
-  const Messages = messageList.map((message, index) => (
-    <S.MessageRow key={index} $isSent={message.name === name ? true : false}>
-      <Message
-        name={message.name}
-        text={message.text}
-        timestamp={message.timestamp}
-        $isSent={message.name === name ? true : false}
-      />
-    </S.MessageRow>
-  ));
 
   return (
     <S.Container>
@@ -74,7 +67,19 @@ export const Chat = () => {
         </S.Room>
       </S.Header>
       <S.Body>
-        {Messages}
+        {messageList.map((message, index) => (
+          <S.MessageRow
+            key={index}
+            $isSent={message.name === name ? true : false}
+          >
+            <Message
+              name={message.name}
+              text={message.text}
+              timestamp={message.timestamp}
+              $isSent={message.name === name ? true : false}
+            />
+          </S.MessageRow>
+        ))}
         <div ref={divRef} />
       </S.Body>
       <S.Footer>

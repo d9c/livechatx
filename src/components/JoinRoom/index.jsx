@@ -16,9 +16,9 @@ export const JoinRoom = () => {
     e.preventDefault();
 
     if (!name.trim() || !room.trim()) {
-      if (!name.trim()) setName("");
-      if (!room.trim()) setRoom("");
-      return;
+      setName("");
+      setRoom("");
+      return false;
     }
 
     socket.emit("joinRoom", { name, room }, (error) => {
