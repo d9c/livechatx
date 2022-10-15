@@ -39,6 +39,12 @@ export const Chat = () => {
         message: `${name} left the room.`,
       });
     });
+
+    return () => {
+      socket.off("receiveMessage");
+      socket.off("userJoined");
+      socket.off("userLeft");
+    };
   }, []);
 
   useEffect(() => {
