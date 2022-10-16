@@ -3,7 +3,11 @@ import io from "socket.io-client";
 
 export const ChatContext = createContext({});
 
-const socket = io.connect("https://livechat-backend.up.railway.app");
+let url = "https://livechat-backend.up.railway.app";
+if (process.env.NODE_ENV === "development") {
+  url = "http://localhost:4000";
+}
+const socket = io.connect(url);
 
 export const ChatContextProvider = ({ children }) => {
   const [name, setName] = useState("");
