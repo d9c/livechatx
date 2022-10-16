@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 
-import * as S from "./styles";
-
 export const SnackbarContext = createContext({});
+
+import * as S from "./styles";
 
 export const SnackbarContextProvider = ({ children }) => {
   const [snackbar, setSnackbar] = useState({
