@@ -12,6 +12,10 @@ export const ChatContextProvider = ({ children }) => {
 
   useEffect(() => {
     socket.on("roomData", (users) => setUserList(users));
+
+    return () => {
+      socket.off("roomData");
+    };
   }, []);
 
   return (
