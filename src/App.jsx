@@ -25,10 +25,10 @@ export const App = () => {
               <Route
                 path="/chat"
                 element={
-                  <S.Content>
+                  <S.ChatContainer>
                     <Chat />
                     <UserList />
-                  </S.Content>
+                  </S.ChatContainer>
                 }
               />
               <Route path="*" element={<Navigate to="/" />} />

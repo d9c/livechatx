@@ -10,8 +10,8 @@ export const Container = styled(MuiBox).attrs({
   border: 1px solid ${(props) => props.theme.border};
   border-radius: 4px;
 
-  width: 640px;
-  height: 512px;
+  width: 100%;
+  height: 80%;
 `;
 
 export const Header = styled.div`
