@@ -23,7 +23,7 @@ export const Chat = () => {
   useEffect(() => {
     if (!name || !room) return navigate("/");
 
-    socket.on("receiveMessage", (message) => {
+    socket.on("newMessage", (message) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
 
@@ -42,7 +42,7 @@ export const Chat = () => {
     });
 
     return () => {
-      socket.off("receiveMessage");
+      socket.off("newMessage");
       socket.off("userJoined");
       socket.off("userLeft");
     };
