@@ -1,23 +1,24 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Send as SendIcon } from "@mui/icons-material";
-
-import * as S from "./styles";
 
 import { Message } from "../Message";
 
 import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
+import * as S from "./styles";
+
 export const Chat = () => {
   const { socket, name, room } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
+  const messageRef = useRef();
+  const divRef = useRef();
+
   const navigate = useNavigate();
-  const divRef = useRef(null);
 
   useEffect(() => {
     if (!name || !room) return navigate("/");
@@ -54,13 +55,15 @@ export const Chat = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!currentMessage.trim()) {
-      setCurrentMessage("");
+    const message = messageRef.current.value;
+
+    if (!message.trim()) {
+      messageRef.current.value = "";
       return false;
     }
 
-    socket.emit("sendMessage", currentMessage, () => {
-      setCurrentMessage("");
+    socket.emit("sendMessage", message, () => {
+      messageRef.current.value = "";
     });
   };
 
@@ -95,8 +98,7 @@ export const Chat = () => {
               type="text"
               placeholder="Message"
               maxLength={160}
-              value={currentMessage}
-              onChange={(e) => setCurrentMessage(e.target.value)}
+              ref={messageRef}
             />
             <S.SendButton type="submit">
               <SendIcon sx={{ color: "#ffffff" }} />

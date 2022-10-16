@@ -1,23 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
-import * as S from "./styles";
 
 import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
 
+import * as S from "./styles";
+
 export const JoinRoom = () => {
-  const { socket, name, setName, room, setRoom } = useContext(ChatContext);
+  const { socket, setName, setRoom } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
+
+  const nameRef = useRef();
+  const roomRef = useRef();
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const name = nameRef.current.value;
+    const room = roomRef.current.value;
+
     if (!name.trim() || !room.trim()) {
-      setName("");
-      setRoom("");
+      nameRef.current.value = "";
+      roomRef.current.value = "";
       return false;
     }
 
@@ -28,6 +34,9 @@ export const JoinRoom = () => {
           message: error,
         });
       }
+
+      setName(name);
+      setRoom(room);
 
       navigate("/chat");
     });
@@ -40,15 +49,13 @@ export const JoinRoom = () => {
           type="text"
           placeholder="Name"
           maxLength={20}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          ref={nameRef}
         />
         <S.TextInput
           type="text"
           placeholder="Room"
           maxLength={20}
-          value={room}
-          onChange={(e) => setRoom(e.target.value)}
+          ref={roomRef}
         />
         <S.Button type="submit">Join</S.Button>
       </form>
