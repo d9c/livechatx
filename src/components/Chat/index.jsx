@@ -27,17 +27,17 @@ export const Chat = () => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
 
-    socket.on("userJoined", (name) => {
+    socket.on("userJoined", (message) => {
       setSnackbar({
         open: true,
-        message: `${name} joined the room.`,
+        message,
       });
     });
 
-    socket.on("userLeft", (name) => {
+    socket.on("userLeft", (message) => {
       setSnackbar({
         open: true,
-        message: `${name} left the room.`,
+        message,
       });
     });
 
