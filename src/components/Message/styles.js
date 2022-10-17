@@ -15,23 +15,23 @@ export const Content = styled(MuiBox).attrs({
   gap: 8px;
 
   background-color: ${(props) =>
-    props.$isSent
-      ? props.theme.message.primary
-      : props.theme.message.secondary};
+    props.$isSent ? props.theme.message.sent : props.theme.message.received};
+
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 4px;
 
   padding: 7px;
 `;
 
 export const Message = styled.span`
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
   word-break: break-all;
 `;
 
 export const Info = styled.span`
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
   filter: opacity(70%);

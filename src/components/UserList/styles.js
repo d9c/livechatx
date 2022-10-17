@@ -20,7 +20,9 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.container.secondary};
+  background-color: ${(props) => props.theme.container.header};
+
+  border-bottom: 1px solid ${(props) => props.theme.border};
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
@@ -29,7 +31,7 @@ export const Header = styled.div`
 `;
 
 export const Span = styled.span`
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;

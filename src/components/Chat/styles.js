@@ -19,7 +19,9 @@ export const Header = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  background-color: ${(props) => props.theme.container.secondary};
+  background-color: ${(props) => props.theme.container.header};
+
+  border-bottom: 1px solid ${(props) => props.theme.border};
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
@@ -30,23 +32,23 @@ export const Header = styled.div`
 export const Room = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 `;
 
 export const Span = styled.span`
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;
 
 export const RoomName = styled.span`
-  text-align: center;
-
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
+  text-align: center;
   color: ${(props) => props.theme.text};
 
-  background-color: ${(props) => props.theme.focus};
+  background-color: ${(props) => props.theme.border};
+
   border-radius: 4px;
 
   min-width: 24px;
@@ -60,9 +62,10 @@ export const Body = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  background-color: ${(props) => props.theme.container.primary};
+  background-color: ${(props) => props.theme.container.body};
 
   height: 100%;
+
   padding: 10px 10px 0px 10px;
 
   overflow-y: scroll;
@@ -72,11 +75,11 @@ export const Body = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #888888;
+    background-color: #646464;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #555555;
+    background-color: #747474;
   }
 `;
 
@@ -92,6 +95,7 @@ export const Footer = styled.div`
   align-items: center;
 
   background-color: ${(props) => props.theme.container.primary};
+
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 
@@ -107,16 +111,18 @@ export const WriteMessage = styled.div`
 `;
 
 export const TextInput = styled.input`
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
 
-  background-color: ${(props) => props.theme.container.secondary};
+  background-color: ${(props) => props.theme.container.header};
+
   border: 1px solid ${(props) => props.theme.border};
   border-radius: 4px;
 
   width: 200px;
   height: 35px;
+
   padding: 5px;
 
   &:focus {
@@ -131,7 +137,8 @@ export const SendButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.message.primary};
+  background-color: ${(props) => props.theme.border};
+
   border: none;
   border-radius: 4px;
 

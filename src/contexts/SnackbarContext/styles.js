@@ -7,7 +7,7 @@ export const Snackbar = styled(MuiSnackbar)`
       background-color: #ffffff;
     }
     .MuiSnackbarContent-message {
-      font-family: "Roboto", sans-serif;
+      font-family: "Inter", sans-serif;
       color: #000000;
     }
   }

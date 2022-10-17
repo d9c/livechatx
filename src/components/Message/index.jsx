@@ -11,7 +11,7 @@ export const Message = ({ name, text, timestamp, $isSent }) => {
 
     return words.map((word, index) => {
       return word.match(urlRegex) ? (
-        <a key={index} href={word} target="_blank" style={{ color: "#80ff80" }}>
+        <a key={index} href={word} target="_blank" style={{ color: "#50e1c8" }}>
           {word}
         </a>
       ) : (
