@@ -13,6 +13,7 @@ export const Container = styled(MuiBox).attrs({
     display: flex;
     justify-content: center;
     align-items: center;
+    right: 0;
 
     background-color: ${(props) => props.theme.container.header};
 
@@ -21,7 +22,7 @@ export const Container = styled(MuiBox).attrs({
     width: 150px;
     height: 50px;
 
-    margin: 10px;
+    margin: 5px;
   }
 `;
 
