@@ -8,7 +8,7 @@ export const DarkTheme = {
   border: "#333",
   focus: "#50e1c8",
   message: {
-    sent: "#111",
-    received: "#222",
+    sent: "#222",
+    received: "#111",
   },
 };
