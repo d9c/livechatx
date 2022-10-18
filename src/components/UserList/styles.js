@@ -4,15 +4,18 @@ import { Box as MuiBox } from "@mui/material";
 export const Container = styled(MuiBox).attrs({
   sx: { boxShadow: 2 },
 })`
-  display: flex;
-  flex-direction: column;
+  && {
+    display: flex;
+    flex-direction: column;
 
-  background-color: ${(props) => props.theme.container.primary};
-  border: 1px solid ${(props) => props.theme.border};
-  border-radius: 4px;
+    background-color: ${(props) => props.theme.container.primary};
 
-  width: 200px;
-  height: 100px;
+    border: 1px solid ${(props) => props.theme.border};
+    border-radius: 4px;
+
+    width: 200px;
+    height: 100px;
+  }
 `;
 
 export const Header = styled.div`
@@ -27,6 +30,7 @@ export const Header = styled.div`
   border-top-right-radius: 4px;
 
   height: 40px;
+
   padding: 10px;
 `;
 
@@ -42,10 +46,12 @@ export const Body = styled.div`
   gap: 5px;
 
   background-color: ${(props) => props.theme.container.primary};
+
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 
   height: 100%;
+
   padding: 10px;
 
   overflow-y: scroll;

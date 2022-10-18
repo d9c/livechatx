@@ -1,17 +1,20 @@
 import styled from "styled-components";
 import { Box as MuiBox } from "@mui/material";
+import { Send as MuiSendIcon } from "@mui/icons-material";
 
 export const Container = styled(MuiBox).attrs({
   sx: { boxShadow: 2 },
 })`
-  display: flex;
-  flex-direction: column;
+  && {
+    display: flex;
+    flex-direction: column;
 
-  border: 1px solid ${(props) => props.theme.border};
-  border-radius: 4px;
+    border: 1px solid ${(props) => props.theme.border};
+    border-radius: 4px;
 
-  width: 100%;
-  height: 80%;
+    width: 100%;
+    height: 80%;
+  }
 `;
 
 export const Header = styled.div`
@@ -26,6 +29,7 @@ export const Header = styled.div`
   border-top-right-radius: 4px;
 
   height: 60px;
+
   padding: 10px;
 `;
 
@@ -86,6 +90,7 @@ export const Body = styled.div`
 export const MessageRow = styled.div`
   display: flex;
   justify-content: ${(props) => (props.$isSent ? "right" : "left")};
+
   width: 100%;
 `;
 
@@ -100,6 +105,7 @@ export const Footer = styled.div`
   border-bottom-right-radius: 4px;
 
   height: 50px;
+
   padding: 10px;
 `;
 
@@ -154,5 +160,11 @@ export const SendButton = styled.button`
   &:hover {
     filter: brightness(80%);
     transition: 100ms ease-in-out;
+  }
+`;
+
+export const SendIcon = styled(MuiSendIcon)`
+  && {
+    color: ${(props) => props.theme.text};
   }
 `;

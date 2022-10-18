@@ -1,6 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Send as SendIcon } from "@mui/icons-material";
 
 import { Message } from "../Message";
 
@@ -101,7 +100,7 @@ export const Chat = () => {
               ref={messageRef}
             />
             <S.SendButton type="submit">
-              <SendIcon sx={{ color: "#ffffff" }} />
+              <S.SendIcon />
             </S.SendButton>
           </S.WriteMessage>
         </form>

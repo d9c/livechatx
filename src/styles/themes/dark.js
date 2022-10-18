@@ -1,14 +1,15 @@
-export const DarkTheme = {
+export const dark = {
+  title: "dark",
   background: "#0a0a0a",
   container: {
-    header: "#111",
+    header: "#111111",
     body: "#0a0a0a",
   },
-  text: "#fff",
-  border: "#333",
+  text: "#ffffff",
+  border: "#333333",
   focus: "#50e1c8",
   message: {
-    sent: "#222",
-    received: "#111",
+    sent: "#222222",
+    received: "#111111",
   },
 };

@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { Chat } from "./components/Chat";
-import { UserList } from "./components/UserList";
-import { JoinRoom } from "./components/JoinRoom";
-
+import { ThemeContext } from "./contexts/ThemeContext";
 import { ChatContextProvider } from "./contexts/ChatContext";
 import { SnackbarContextProvider } from "./contexts/SnackbarContext";
 
-import { DarkTheme } from "./styles/themes/dark";
+import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import { JoinRoom } from "./components/JoinRoom";
+import { Chat } from "./components/Chat";
+import { UserList } from "./components/UserList";
+
 import { GlobalStyle } from "./styles/global";
 
 import * as S from "./App.styles";
 
 export const App = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <ThemeProvider theme={DarkTheme}>
+    <ThemeProvider theme={theme}>
+      <ThemeSwitcher />
       <ChatContextProvider>
         <SnackbarContextProvider>
           <S.Container>
