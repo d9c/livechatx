@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Box as MuiBox } from "@mui/material";
 
 export const Container = styled.div`
   display: flex;
@@ -7,25 +6,44 @@ export const Container = styled.div`
   gap: 5px;
 `;
 
-export const Content = styled(MuiBox).attrs({
-  sx: { boxShadow: 2 },
-})`
-  && {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+export const Box = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-    background-color: ${(props) =>
-      props.$isSent ? props.theme.message.sent : props.theme.message.received};
+  background-color: ${(props) =>
+    props.$isSent ? props.theme.message.sent : props.theme.message.received};
 
-    border: 1px solid ${(props) => props.theme.border};
-    border-radius: 4px;
+  border-radius: 4px;
 
-    padding: 7px;
+  padding: 7px;
+
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: ${(props) => (props.$isSent ? "100%" : "")};
+    right: ${(props) => (!props.$isSent ? "100%" : "")};
+
+    content: "";
+
+    border: solid transparent;
+    border-width: 10px;
+    border-left-color: ${(props) =>
+      props.$isSent ? props.theme.message.sent : ""};
+    border-right-color: ${(props) =>
+      !props.$isSent ? props.theme.message.received : ""};
+
+    width: 0;
+    height: 0;
+
+    margin-top: -10px;
+
+    pointer-events: none;
   }
 `;
 
-export const Message = styled.span`
+export const Text = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};

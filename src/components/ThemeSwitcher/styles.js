@@ -35,11 +35,11 @@ export const ThemeSwitch = styled.div`
 export const Switch = styled(MuiSwitch)`
   && {
     .MuiSwitch-switchBase.Mui-checked {
-      color: ${(props) => props.theme.focus};
+      color: #ffffff;
     }
 
     .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
-      background-color: ${(props) => props.theme.focus};
+      background-color: #ffffff;
     }
   }
 `;

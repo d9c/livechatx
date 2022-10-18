@@ -1,21 +1,16 @@
 import styled from "styled-components";
-import { Box as MuiBox } from "@mui/material";
 
-export const Container = styled(MuiBox).attrs({
-  sx: { boxShadow: 2 },
-})`
-  && {
-    display: flex;
-    flex-direction: column;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
 
-    background-color: ${(props) => props.theme.container.primary};
+  background-color: ${(props) => props.theme.container.primary};
 
-    border: 1px solid ${(props) => props.theme.border};
-    border-radius: 4px;
+  border: 1px solid ${(props) => props.theme.border};
+  border-radius: 4px;
 
-    width: 200px;
-    height: 100px;
-  }
+  width: 200px;
+  height: 100px;
 `;
 
 export const Header = styled.div`

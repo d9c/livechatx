@@ -22,11 +22,11 @@ export const Message = ({ name, text, timestamp, $isSent }) => {
 
   return (
     <S.Container>
-      <S.Content $isSent={$isSent}>
+      <S.Box $isSent={$isSent}>
         <S.Info $isSent={$isSent}>{name}</S.Info>
-        <S.Message>{linkify(text)}</S.Message>
+        <S.Text>{linkify(text)}</S.Text>
         <S.Info $isSent={$isSent}>{timestamp}</S.Info>
-      </S.Content>
+      </S.Box>
     </S.Container>
   );
 };
