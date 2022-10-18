@@ -9,7 +9,7 @@ export const Container = styled(MuiBox).attrs({
   sx: { boxShadow: 2 },
 })`
   && {
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
