@@ -7,7 +7,6 @@ export const dark = {
   },
   text: "#ffffff",
   border: "#333333",
-  focus: "#50e1c8",
   message: {
     sent: "#222222",
     received: "#111111",

@@ -25,7 +25,7 @@ export const TextInput = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid ${(props) => props.theme.focus};
+    border: 1px solid #ffffff;
     transition: 100ms ease-in-out;
   }
 `;
