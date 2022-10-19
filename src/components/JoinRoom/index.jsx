@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { ChatContext } from "../../contexts/ChatContext";
 import { SnackbarContext } from "../../contexts/SnackbarContext";
@@ -43,7 +44,7 @@ export const JoinRoom = () => {
   };
 
   return (
-    <S.Container>
+    <S.Container as={motion.div} initial={{ scale: 0 }} animate={{ scale: 1 }}>
       <form onSubmit={handleSubmit}>
         <S.TextInput
           type="text"

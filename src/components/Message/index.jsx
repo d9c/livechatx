@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import * as S from "./styles";
 
@@ -21,7 +22,7 @@ export const Message = ({ name, text, timestamp, $isSent }) => {
   };
 
   return (
-    <S.Container>
+    <S.Container as={motion.div} initial={{ scale: 0 }} animate={{ scale: 1 }}>
       <S.Box $isSent={$isSent}>
         <S.Info $isSent={$isSent}>{name}</S.Info>
         <S.Text>{linkify(text)}</S.Text>

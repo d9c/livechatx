@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { Message } from "../Message";
 
@@ -67,7 +68,7 @@ export const Chat = () => {
   };
 
   return (
-    <S.Container>
+    <S.Container as={motion.div} initial={{ scale: 0 }} animate={{ scale: 1 }}>
       <S.Header>
         <S.Room>
           <S.Span>Room</S.Span>

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
 
 import { ChatContext } from "../../contexts/ChatContext";
 
@@ -8,7 +9,7 @@ export const UserList = () => {
   const { userList } = useContext(ChatContext);
 
   return (
-    <S.Container>
+    <S.Container as={motion.div} initial={{ scale: 0 }} animate={{ scale: 1 }}>
       <S.Header>
         <S.Span>Connected Users</S.Span>
       </S.Header>
