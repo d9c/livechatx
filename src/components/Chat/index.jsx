@@ -68,7 +68,12 @@ export const Chat = () => {
   };
 
   return (
-    <S.Container as={motion.div} initial={{ scale: 0 }} animate={{ scale: 1 }}>
+    <S.Container
+      as={motion.div}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.2 }}
+    >
       <S.Header>
         <S.Room>
           <S.Span>Room</S.Span>

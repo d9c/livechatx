@@ -44,7 +44,12 @@ export const JoinRoom = () => {
   };
 
   return (
-    <S.Container as={motion.div} initial={{ scale: 0 }} animate={{ scale: 1 }}>
+    <S.Container
+      as={motion.div}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.2 }}
+    >
       <form onSubmit={handleSubmit}>
         <S.TextInput
           type="text"
