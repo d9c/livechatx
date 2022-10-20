@@ -24,9 +24,8 @@ export const Message = ({ name, text, timestamp, $isSent }) => {
   return (
     <S.Container
       as={motion.div}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.2 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
       <S.Box $isSent={$isSent}>
         <S.Info $isSent={$isSent}>{name}</S.Info>

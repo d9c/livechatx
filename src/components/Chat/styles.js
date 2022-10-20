@@ -130,7 +130,6 @@ export const TextInput = styled.input`
   &:focus {
     outline: none;
     border: 1px solid #ffffff;
-    transition: 100ms ease-in-out;
   }
 `;
 
@@ -155,7 +154,6 @@ export const SendButton = styled.button`
 
   &:hover {
     filter: brightness(80%);
-    transition: 100ms ease-in-out;
   }
 `;
 

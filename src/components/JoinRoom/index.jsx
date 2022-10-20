@@ -46,9 +46,8 @@ export const JoinRoom = () => {
   return (
     <S.Container
       as={motion.div}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.2 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
       <form onSubmit={handleSubmit}>
         <S.TextInput
@@ -56,14 +55,25 @@ export const JoinRoom = () => {
           placeholder="Name"
           maxLength={20}
           ref={nameRef}
+          as={motion.input}
+          whileFocus={{ scale: 1.05 }}
         />
         <S.TextInput
           type="text"
           placeholder="Room"
           maxLength={20}
           ref={roomRef}
+          as={motion.input}
+          whileFocus={{ scale: 1.05 }}
         />
-        <S.Button type="submit">Join</S.Button>
+        <S.Button
+          type="submit"
+          as={motion.button}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Join
+        </S.Button>
       </form>
     </S.Container>
   );

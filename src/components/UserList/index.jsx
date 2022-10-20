@@ -11,9 +11,8 @@ export const UserList = () => {
   return (
     <S.Container
       as={motion.div}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.2 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
       <S.Header>
         <S.Span>Connected Users</S.Span>

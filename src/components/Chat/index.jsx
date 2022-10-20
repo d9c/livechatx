@@ -70,9 +70,8 @@ export const Chat = () => {
   return (
     <S.Container
       as={motion.div}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.2 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
       <S.Header>
         <S.Room>
@@ -104,8 +103,15 @@ export const Chat = () => {
               placeholder="Message"
               maxLength={160}
               ref={messageRef}
+              as={motion.input}
+              whileFocus={{ scale: 1.05 }}
             />
-            <S.SendButton type="submit">
+            <S.SendButton
+              type="submit"
+              as={motion.button}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            >
               <S.SendIcon />
             </S.SendButton>
           </S.WriteMessage>
