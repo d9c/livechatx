@@ -10,7 +10,7 @@ import { SnackbarContext } from "../../contexts/SnackbarContext";
 import * as S from "./styles";
 
 export const Chat = () => {
-  const { socket, name, room } = useContext(ChatContext);
+  const { socket, userSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
   const [messageList, setMessageList] = useState([]);
@@ -21,7 +21,7 @@ export const Chat = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!name || !room) return navigate("/");
+    if (!userSettings.name || !userSettings.room) return navigate("/");
 
     socket.on("newMessage", (message) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
@@ -76,20 +76,20 @@ export const Chat = () => {
       <S.Header>
         <S.Room>
           <S.Span>Room</S.Span>
-          <S.RoomName>{room}</S.RoomName>
+          <S.RoomName>{userSettings.room}</S.RoomName>
         </S.Room>
       </S.Header>
       <S.Body>
         {messageList.map((message, index) => (
           <S.MessageRow
             key={index}
-            $isSent={message.name === name ? true : false}
+            $isSent={message.name === userSettings.name ? true : false}
           >
             <Message
               name={message.name}
               text={message.text}
               timestamp={message.timestamp}
-              $isSent={message.name === name ? true : false}
+              $isSent={message.name === userSettings.name ? true : false}
             />
           </S.MessageRow>
         ))}

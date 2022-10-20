@@ -10,8 +10,10 @@ const backendUrl =
 const socket = io.connect(backendUrl);
 
 export const ChatContextProvider = ({ children }) => {
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
+  const [userSettings, setUserSettings] = useState({
+    name: "",
+    room: "",
+  });
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -26,10 +28,8 @@ export const ChatContextProvider = ({ children }) => {
     <ChatContext.Provider
       value={{
         socket,
-        name,
-        setName,
-        room,
-        setRoom,
+        userSettings,
+        setUserSettings,
         userList,
         setUserList,
       }}

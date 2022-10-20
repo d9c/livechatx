@@ -8,7 +8,7 @@ import { SnackbarContext } from "../../contexts/SnackbarContext";
 import * as S from "./styles";
 
 export const JoinRoom = () => {
-  const { socket, setName, setRoom } = useContext(ChatContext);
+  const { socket, setUserSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
   const nameRef = useRef();
@@ -36,8 +36,10 @@ export const JoinRoom = () => {
         });
       }
 
-      setName(name);
-      setRoom(room);
+      setUserSettings({
+        name,
+        room,
+      });
 
       navigate("/chat");
     });
