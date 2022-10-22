@@ -30,7 +30,7 @@ export const TextInput = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: ${(props) => props.theme.container.header};
+  background-color: ${(props) => props.theme.border};
 
   border: none;
   border-radius: 4px;

@@ -14,8 +14,8 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 10px;
 
   background-color: ${(props) => props.theme.container.header};
 
@@ -28,23 +28,16 @@ export const Header = styled.div`
   padding: 10px;
 `;
 
-export const Room = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
-
 export const Span = styled.span`
   font-family: "Inter", sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;
 
-export const RoomName = styled.span`
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
-  text-align: center;
-  color: ${(props) => props.theme.text};
+export const RoomBadge = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: ${(props) => props.theme.border};
 

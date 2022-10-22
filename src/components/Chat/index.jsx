@@ -74,10 +74,10 @@ export const Chat = () => {
       animate={{ opacity: 1 }}
     >
       <S.Header>
-        <S.Room>
-          <S.Span>Room</S.Span>
-          <S.RoomName>{userSettings.room}</S.RoomName>
-        </S.Room>
+        <S.Span>Room</S.Span>
+        <S.RoomBadge>
+          <S.Span>{userSettings.room}</S.Span>
+        </S.RoomBadge>
       </S.Header>
       <S.Body>
         {messageList.map((message, index) => (
