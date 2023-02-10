@@ -64,15 +64,15 @@ export const Body = styled.div`
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: #646464;
-  }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #747474;
+    &:hover {
+      background-color: #747474;
+    }
   }
 `;
 
