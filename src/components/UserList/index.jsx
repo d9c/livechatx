@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { motion } from "framer-motion";
+import { useContext } from 'react';
+import { motion } from 'framer-motion';
 
-import { ChatContext } from "../../contexts/ChatContext";
+import { ChatContext } from '../../contexts/ChatContext';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const UserList = () => {
   const { userList } = useContext(ChatContext);
@@ -20,7 +20,7 @@ export const UserList = () => {
       <S.Body>
         {userList.map((user, index) => (
           <S.User key={index}>
-            <S.Span style={{ color: "#80ff80" }}>•</S.Span>
+            <S.Span style={{ color: '#80ff80' }}>•</S.Span>
             <S.Span>{user.name}</S.Span>
           </S.User>
         ))}

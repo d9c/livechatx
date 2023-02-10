@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Send as MuiSendIcon } from "@mui/icons-material";
+import styled from 'styled-components';
+import Send from '@mui/icons-material/Send';
 
 export const Container = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ export const Header = styled.div`
 `;
 
 export const Span = styled.span`
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;
@@ -78,7 +78,7 @@ export const Body = styled.div`
 
 export const MessageRow = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.$isSent ? "right" : "left")};
+  justify-content: ${(props) => (props.$isSent ? 'right' : 'left')};
 
   width: 100%;
 `;
@@ -106,7 +106,7 @@ export const WriteMessage = styled.div`
 `;
 
 export const TextInput = styled.input`
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
 
@@ -150,7 +150,7 @@ export const SendButton = styled.button`
   }
 `;
 
-export const SendIcon = styled(MuiSendIcon)`
+export const SendIcon = styled(Send)`
   && {
     color: ${(props) => props.theme.text};
   }

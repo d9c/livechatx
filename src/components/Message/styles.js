@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -22,17 +22,17 @@ export const Box = styled.div`
   &:after {
     position: absolute;
     top: 50%;
-    left: ${(props) => (props.$isSent ? "100%" : "")};
-    right: ${(props) => (!props.$isSent ? "100%" : "")};
+    left: ${(props) => (props.$isSent ? '100%' : '')};
+    right: ${(props) => (!props.$isSent ? '100%' : '')};
 
-    content: "";
+    content: '';
 
     border: solid transparent;
     border-width: 10px;
     border-left-color: ${(props) =>
-      props.$isSent ? props.theme.message.sent : ""};
+      props.$isSent ? props.theme.message.sent : ''};
     border-right-color: ${(props) =>
-      !props.$isSent ? props.theme.message.received : ""};
+      !props.$isSent ? props.theme.message.received : ''};
 
     width: 0;
     height: 0;
@@ -44,14 +44,14 @@ export const Box = styled.div`
 `;
 
 export const Text = styled.span`
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
   word-break: break-all;
 `;
 
 export const Info = styled.span`
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 

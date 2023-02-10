@@ -1,31 +1,31 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 export const SnackbarContext = createContext({});
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const SnackbarContextProvider = ({ children }) => {
   const [snackbar, setSnackbar] = useState({
     open: false,
-    message: "",
+    message: '',
   });
 
   const handleClose = (e, reason) => {
-    if (reason === "clickaway") return;
+    if (reason === 'clickaway') return;
     setSnackbar({
       open: false,
-      message: "",
+      message: '',
     });
   };
 
   return (
     <SnackbarContext.Provider value={{ snackbar, setSnackbar }}>
       {children}
-      <S.Snackbar
+      <S.MuiSnackbar
         open={snackbar.open}
         autoHideDuration={3000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         message={snackbar.message}
       />
     </SnackbarContext.Provider>

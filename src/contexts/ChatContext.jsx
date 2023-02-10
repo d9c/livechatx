@@ -1,22 +1,23 @@
-import React, { createContext, useState, useEffect } from "react";
-import io from "socket.io-client";
+import { createContext, useState, useEffect } from 'react';
+import io from 'socket.io-client';
 
 export const ChatContext = createContext({});
 
-const socket = io.connect("https://livechat-backend.up.railway.app");
+const socket = io.connect('https://livechat.backend.up.railway.app');
 
 export const ChatContextProvider = ({ children }) => {
   const [userSettings, setUserSettings] = useState({
-    name: "",
-    room: "",
+    name: '',
+    room: '',
   });
+
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    socket.on("roomData", (users) => setUserList(users));
+    socket.on('roomData', (users) => setUserList(users));
 
     return () => {
-      socket.off("roomData");
+      socket.off('roomData');
     };
   }, []);
 

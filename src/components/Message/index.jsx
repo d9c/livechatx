@@ -1,18 +1,17 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const Message = ({ name, text, timestamp, $isSent }) => {
   const linkify = (text) => {
     const urlRegex =
       /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
 
-    const words = text.split(" ");
+    const words = text.split(' ');
 
     return words.map((word, index) => {
       return word.match(urlRegex) ? (
-        <a key={index} href={word} target="_blank" style={{ color: "#50e1c8" }}>
+        <a key={index} href={word} target="_blank" style={{ color: '#50e1c8' }}>
           {word}
         </a>
       ) : (

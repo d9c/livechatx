@@ -1,13 +1,13 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useContext, useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-import { Message } from "../Message";
+import { Message } from '../Message';
 
-import { ChatContext } from "../../contexts/ChatContext";
-import { SnackbarContext } from "../../contexts/SnackbarContext";
+import { ChatContext } from '../../contexts/ChatContext';
+import { SnackbarContext } from '../../contexts/SnackbarContext';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const Chat = () => {
   const { socket, userSettings } = useContext(ChatContext);
@@ -21,20 +21,20 @@ export const Chat = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userSettings.name || !userSettings.room) return navigate("/");
+    if (!userSettings.name || !userSettings.room) return navigate('/');
 
-    socket.on("newMessage", (message) => {
+    socket.on('newMessage', (message) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
 
-    socket.on("userJoined", (message) => {
+    socket.on('userJoined', (message) => {
       setSnackbar({
         open: true,
         message,
       });
     });
 
-    socket.on("userLeft", (message) => {
+    socket.on('userLeft', (message) => {
       setSnackbar({
         open: true,
         message,
@@ -42,14 +42,14 @@ export const Chat = () => {
     });
 
     return () => {
-      socket.off("newMessage");
-      socket.off("userJoined");
-      socket.off("userLeft");
+      socket.off('newMessage');
+      socket.off('userJoined');
+      socket.off('userLeft');
     };
   }, []);
 
   useEffect(() => {
-    divRef.current.scrollIntoView({ behavior: "smooth" });
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [messageList]);
 
   const handleSubmit = (e) => {
@@ -58,12 +58,12 @@ export const Chat = () => {
     const message = messageRef.current.value;
 
     if (!message.trim()) {
-      messageRef.current.value = "";
+      messageRef.current.value = '';
       return false;
     }
 
-    socket.emit("sendMessage", message, () => {
-      messageRef.current.value = "";
+    socket.emit('sendMessage', message, () => {
+      messageRef.current.value = '';
     });
   };
 

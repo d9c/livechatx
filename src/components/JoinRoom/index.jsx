@@ -1,11 +1,11 @@
-import React, { useContext, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-import { ChatContext } from "../../contexts/ChatContext";
-import { SnackbarContext } from "../../contexts/SnackbarContext";
+import { ChatContext } from '../../contexts/ChatContext';
+import { SnackbarContext } from '../../contexts/SnackbarContext';
 
-import * as S from "./styles";
+import * as S from './styles';
 
 export const JoinRoom = () => {
   const { socket, setUserSettings } = useContext(ChatContext);
@@ -23,12 +23,12 @@ export const JoinRoom = () => {
     const room = roomRef.current.value;
 
     if (!name.trim() || !room.trim()) {
-      nameRef.current.value = "";
-      roomRef.current.value = "";
+      nameRef.current.value = '';
+      roomRef.current.value = '';
       return false;
     }
 
-    socket.emit("joinRoom", { name, room }, (error) => {
+    socket.emit('joinRoom', { name, room }, (error) => {
       if (error) {
         return setSnackbar({
           open: true,
@@ -41,7 +41,7 @@ export const JoinRoom = () => {
         room,
       });
 
-      navigate("/chat");
+      navigate('/chat');
     });
   };
 

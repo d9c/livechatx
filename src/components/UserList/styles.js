@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ export const Header = styled.div`
 `;
 
 export const Span = styled.span`
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;
