@@ -11,14 +11,19 @@ type Props = {
 
 export const Message = ({ message, $isSent }: Props) => {
   const linkify = (text: string) => {
-    const urlRegex =
-      /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
+    const regex = /(https?:\/\/[^\s]+)/g;
 
     const words = text.split(' ');
 
     return words.map((word, index) => {
-      return word.match(urlRegex) ? (
-        <a key={index} href={word} target="_blank" style={{ color: '#50e1c8' }}>
+      return word.match(regex) ? (
+        <a
+          key={index}
+          href={word}
+          target="_blank"
+          rel="noreferrer"
+          style={{ color: '#50e1c8' }}
+        >
           {word}
         </a>
       ) : (
