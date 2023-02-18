@@ -29,7 +29,7 @@ const initialValues = {
   setUserList: () => {},
 };
 
-const socket: Socket = io('http://localhost:5000');
+const socket: Socket = io('https://livechat.backend.up.railway.app');
 
 export const ChatContext = createContext<ContextValues>(initialValues);
 
