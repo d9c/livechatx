@@ -1,12 +1,15 @@
 export type ThemeType = {
   title: string;
   background: string;
-  container: {
-    header: string;
-    body: string;
-  };
   text: string;
-  border: string;
+  border: {
+    main: string;
+    hover: string;
+  };
+  button: {
+    main: string;
+    hover: string;
+  };
   message: {
     sent: string;
     received: string;

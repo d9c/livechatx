@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${(props) => props.theme.border.main};
   border-radius: 4px;
 
   width: 100%;
@@ -21,9 +21,7 @@ export const Header = styled.div`
   align-items: center;
   gap: 10px;
 
-  background-color: ${(props) => props.theme.container.header};
-
-  border-bottom: 1px solid ${(props) => props.theme.border};
+  border-bottom: 1px solid ${(props) => props.theme.border.main};
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
@@ -43,7 +41,7 @@ export const RoomBadge = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.border};
+  background-color: ${(props) => props.theme.button.main};
 
   border-radius: 4px;
 
@@ -57,8 +55,6 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  background-color: ${(props) => props.theme.container.body};
 
   height: 100%;
 
@@ -92,8 +88,6 @@ export const Footer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.container.primary};
-
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 
@@ -114,9 +108,9 @@ export const TextInput = styled.input`
   font-size: 14px;
   color: ${(props) => props.theme.text};
 
-  background-color: ${(props) => props.theme.container.header};
+  background-color: ${(props) => props.theme.background};
 
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${(props) => props.theme.border.main};
   border-radius: 4px;
 
   width: 200px;
@@ -124,9 +118,15 @@ export const TextInput = styled.input`
 
   padding: 5px;
 
+  &:hover {
+    outline: none;
+    border: 1px solid ${(props) => props.theme.border.hover};
+    transition: 100ms ease-in-out;
+  }
+
   &:focus {
     outline: none;
-    border: 1px solid #ffffff;
+    border: 1px solid ${(props) => props.theme.border.hover};
   }
 `;
 
@@ -135,7 +135,7 @@ export const SendButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.border};
+  background-color: ${(props) => props.theme.button.main};
 
   border: none;
   border-radius: 4px;
@@ -145,12 +145,13 @@ export const SendButton = styled.button`
 
   cursor: pointer;
 
-  &:focus {
-    outline: none;
+  &:hover {
+    background-color: ${(props) => props.theme.button.hover};
+    transition: 100ms ease-in-out;
   }
 
-  &:hover {
-    filter: brightness(80%);
+  &:focus {
+    outline: none;
   }
 `;
 

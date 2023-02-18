@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 import { MessageType } from '../../types/messageType';
 
 import * as S from './styles';
@@ -33,11 +31,7 @@ export const Message = ({ message, $isSent }: Props) => {
   };
 
   return (
-    <S.Container
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-    >
+    <S.Container>
       <S.Box $isSent={$isSent}>
         <S.Info>{message.name}</S.Info>
         <S.Text>{linkify(message.text)}</S.Text>

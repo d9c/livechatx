@@ -113,15 +113,8 @@ export const Chat = () => {
               placeholder="Message"
               maxLength={160}
               ref={messageRef}
-              as={motion.input}
-              whileFocus={{ scale: 1.05 }}
             />
-            <S.SendButton
-              type="submit"
-              as={motion.button}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
+            <S.SendButton type="submit">
               <S.SendIcon />
             </S.SendButton>
           </S.WriteMessage>

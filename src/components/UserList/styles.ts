@@ -4,9 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: ${(props) => props.theme.container.primary};
-
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${(props) => props.theme.border.main};
   border-radius: 4px;
 
   width: 200px;
@@ -18,9 +16,7 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => props.theme.container.header};
-
-  border-bottom: 1px solid ${(props) => props.theme.border};
+  border-bottom: 1px solid ${(props) => props.theme.border.main};
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
@@ -39,8 +35,6 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-
-  background-color: ${(props) => props.theme.container.primary};
 
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;

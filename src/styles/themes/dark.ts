@@ -1,12 +1,15 @@
 export const dark = {
   title: 'dark',
   background: '#0b0b0b',
-  container: {
-    header: '#0b0b0b',
-    body: '#0b0b0b',
-  },
   text: '#ffffff',
-  border: '#333333',
+  border: {
+    main: '#333333',
+    hover: '#ffffff',
+  },
+  button: {
+    main: '#333333',
+    hover: 'rgba(51, 51, 51, 0.5)',
+  },
   message: {
     sent: '#3d3d3d',
     received: '#1f1f1f',

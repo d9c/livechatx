@@ -9,9 +9,9 @@ export const Container = styled.div`
 `;
 
 export const TextInput = styled.input`
-  background-color: ${(props) => props.theme.container.header};
+  background-color: ${(props) => props.theme.background};
 
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${(props) => props.theme.border.main};
   border-radius: 4px;
 
   font-family: 'Inter', sans-serif;
@@ -23,6 +23,12 @@ export const TextInput = styled.input`
 
   padding: 5px;
 
+  &:hover {
+    outline: none;
+    border: 1px solid #ffffff;
+    transition: 100ms ease-in-out;
+  }
+
   &:focus {
     outline: none;
     border: 1px solid #ffffff;
@@ -30,7 +36,7 @@ export const TextInput = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: ${(props) => props.theme.border};
+  background-color: ${(props) => props.theme.button.main};
 
   border: none;
   border-radius: 4px;
@@ -44,11 +50,12 @@ export const Button = styled.button`
 
   cursor: pointer;
 
-  &:focus {
-    outline: none;
+  &:hover {
+    background-color: ${(props) => props.theme.button.hover};
+    transition: 100ms ease-in-out;
   }
 
-  &:hover {
-    filter: brightness(80%);
+  &:focus {
+    outline: none;
   }
 `;
