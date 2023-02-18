@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import Send from '@mui/icons-material/Send';
 
+type Props = {
+  $isSent: string;
+};
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,9 +80,9 @@ export const Body = styled.div`
   }
 `;
 
-export const MessageRow = styled.div`
+export const MessageRow = styled.div<Props>`
   display: flex;
-  justify-content: ${(props) => (props.$isSent ? 'right' : 'left')};
+  justify-content: ${(props) => props.$isSent};
 
   width: 100%;
 `;

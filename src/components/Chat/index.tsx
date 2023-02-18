@@ -7,34 +7,38 @@ import { Message } from '../Message';
 import { ChatContext } from '../../contexts/ChatContext';
 import { SnackbarContext } from '../../contexts/SnackbarContext';
 
+import { MessageType } from '../../types/messageType';
+
 import * as S from './styles';
 
 export const Chat = () => {
   const { socket, userSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState<MessageType[]>([]);
 
-  const messageRef = useRef();
-  const divRef = useRef();
+  const messageRef = useRef<HTMLInputElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userSettings.name || !userSettings.room) return navigate('/');
+    if (!userSettings.name || !userSettings.room) {
+      return navigate('/');
+    }
 
-    socket.on('newMessage', (message) => {
+    socket?.on('newMessage', (message: MessageType) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
 
-    socket.on('userJoined', (message) => {
+    socket?.on('userJoined', (message: string) => {
       setSnackbar({
         open: true,
         message,
       });
     });
 
-    socket.on('userLeft', (message) => {
+    socket?.on('userLeft', (message: string) => {
       setSnackbar({
         open: true,
         message,
@@ -42,28 +46,36 @@ export const Chat = () => {
     });
 
     return () => {
-      socket.off('newMessage');
-      socket.off('userJoined');
-      socket.off('userLeft');
+      socket?.off('newMessage');
+      socket?.off('userJoined');
+      socket?.off('userLeft');
     };
   }, []);
 
   useEffect(() => {
-    divRef.current.scrollIntoView({ behavior: 'smooth' });
+    divRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messageList]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const message = messageRef.current.value;
+    const message: string | undefined = messageRef.current?.value;
 
-    if (!message.trim()) {
-      messageRef.current.value = '';
+    if (!message) {
       return false;
     }
 
-    socket.emit('sendMessage', message, () => {
-      messageRef.current.value = '';
+    if (!message.trim()) {
+      if (messageRef.current) {
+        messageRef.current.value = '';
+      }
+      return false;
+    }
+
+    socket?.emit('sendMessage', message, () => {
+      if (messageRef.current) {
+        messageRef.current.value = '';
+      }
     });
   };
 
@@ -83,13 +95,11 @@ export const Chat = () => {
         {messageList.map((message, index) => (
           <S.MessageRow
             key={index}
-            $isSent={message.name === userSettings.name ? true : false}
+            $isSent={message.name === userSettings.name ? 'right' : 'left'}
           >
             <Message
-              name={message.name}
-              text={message.text}
-              timestamp={message.timestamp}
-              $isSent={message.name === userSettings.name ? true : false}
+              message={message}
+              $isSent={message.name === userSettings.name ? 'right' : 'left'}
             />
           </S.MessageRow>
         ))}

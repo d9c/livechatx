@@ -11,24 +11,34 @@ export const JoinRoom = () => {
   const { socket, setUserSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const nameRef = useRef();
-  const roomRef = useRef();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const roomRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const name = nameRef.current.value;
-    const room = roomRef.current.value;
+    const name: string | undefined = nameRef.current?.value;
+    const room: string | undefined = roomRef.current?.value;
 
-    if (!name.trim() || !room.trim()) {
-      nameRef.current.value = '';
-      roomRef.current.value = '';
+    if (!name || !room) {
       return false;
     }
 
-    socket.emit('joinRoom', { name, room }, (error) => {
+    if (!name.trim() || !room.trim()) {
+      if (nameRef.current) {
+        nameRef.current.value = '';
+      }
+
+      if (roomRef.current) {
+        roomRef.current.value = '';
+      }
+
+      return false;
+    }
+
+    socket?.emit('joinRoom', { name, room }, (error: string) => {
       if (error) {
         return setSnackbar({
           open: true,

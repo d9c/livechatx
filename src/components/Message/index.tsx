@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 
+import { MessageType } from '../../types/messageType';
+
 import * as S from './styles';
 
-export const Message = ({ name, text, timestamp, $isSent }) => {
-  const linkify = (text) => {
+type Props = {
+  message: MessageType;
+  $isSent: string;
+};
+
+export const Message = ({ message, $isSent }: Props) => {
+  const linkify = (text: string) => {
     const urlRegex =
       /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
 
@@ -27,9 +34,9 @@ export const Message = ({ name, text, timestamp, $isSent }) => {
       animate={{ opacity: 1 }}
     >
       <S.Box $isSent={$isSent}>
-        <S.Info $isSent={$isSent}>{name}</S.Info>
-        <S.Text>{linkify(text)}</S.Text>
-        <S.Info $isSent={$isSent}>{timestamp}</S.Info>
+        <S.Info>{message.name}</S.Info>
+        <S.Text>{linkify(message.text)}</S.Text>
+        <S.Info>{message.timestamp}</S.Info>
       </S.Box>
     </S.Container>
   );

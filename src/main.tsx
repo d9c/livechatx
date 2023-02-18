@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { App } from './App';
 
-const root = document.getElementById('root');
+const root = document.getElementById('root') as HTMLElement;
 createRoot(root).render(
   <Router>
     <App />

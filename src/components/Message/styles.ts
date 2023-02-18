@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import { ThemeType } from '../../types/themeType';
+
+type Props = {
+  theme: ThemeType;
+  $isSent: string;
+};
 
 export const Container = styled.div`
   display: flex;
@@ -6,7 +12,7 @@ export const Container = styled.div`
   gap: 5px;
 `;
 
-export const Box = styled.div`
+export const Box = styled.div<Props>`
   position: relative;
   display: flex;
   flex-direction: column;
