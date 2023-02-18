@@ -6,7 +6,7 @@ import * as S from './styles';
 
 type Props = {
   message: MessageType;
-  $isSent: string;
+  $isSent: boolean;
 };
 
 export const Message = ({ message, $isSent }: Props) => {

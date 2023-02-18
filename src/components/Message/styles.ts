@@ -3,7 +3,7 @@ import { ThemeType } from '../../types/themeType';
 
 type Props = {
   theme: ThemeType;
-  $isSent: string;
+  $isSent: boolean;
 };
 
 export const Container = styled.div`

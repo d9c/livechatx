@@ -95,11 +95,11 @@ export const Chat = () => {
         {messageList.map((message, index) => (
           <S.MessageRow
             key={index}
-            $isSent={message.name === userSettings.name ? 'right' : 'left'}
+            $isSent={message.name === userSettings.name ? true : false}
           >
             <Message
               message={message}
-              $isSent={message.name === userSettings.name ? 'right' : 'left'}
+              $isSent={message.name === userSettings.name ? true : false}
             />
           </S.MessageRow>
         ))}
