@@ -35,8 +35,7 @@ export const ChatContext = createContext<ContextValues>(initialValues);
 
 export const ChatContextProvider = ({ children }: Props) => {
   const [userSettings, setUserSettings] = useState(initialValues.userSettings);
-
-  const [userList, setUserList] = useState<User[]>([]);
+  const [userList, setUserList] = useState<User[]>(initialValues.userList);
 
   useEffect(() => {
     socket.on('roomData', (users: User[]) => setUserList(users));
