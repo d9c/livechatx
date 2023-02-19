@@ -59,24 +59,15 @@ export const Chat = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const message: string | undefined = messageRef.current?.value;
+    const message = messageRef.current?.value.trim();
 
-    if (!message) {
-      return false;
+    if (message) {
+      socket?.emit('sendMessage', message, () => {
+        if (messageRef.current) {
+          messageRef.current.value = '';
+        }
+      });
     }
-
-    if (!message.trim()) {
-      if (messageRef.current) {
-        messageRef.current.value = '';
-      }
-      return false;
-    }
-
-    socket?.emit('sendMessage', message, () => {
-      if (messageRef.current) {
-        messageRef.current.value = '';
-      }
-    });
   };
 
   return (

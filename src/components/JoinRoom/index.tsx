@@ -19,40 +19,26 @@ export const JoinRoom = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const name: string | undefined = nameRef.current?.value;
-    const room: string | undefined = roomRef.current?.value;
+    const name = nameRef.current?.value.trim();
+    const room = roomRef.current?.value.trim();
 
-    if (!name || !room) {
-      return false;
-    }
+    if (name && room) {
+      socket?.emit('joinRoom', { name, room }, (error: string) => {
+        if (error) {
+          return setSnackbar({
+            open: true,
+            message: error,
+          });
+        }
 
-    if (!name.trim() || !room.trim()) {
-      if (nameRef.current) {
-        nameRef.current.value = '';
-      }
-
-      if (roomRef.current) {
-        roomRef.current.value = '';
-      }
-
-      return false;
-    }
-
-    socket?.emit('joinRoom', { name, room }, (error: string) => {
-      if (error) {
-        return setSnackbar({
-          open: true,
-          message: error,
+        setUserSettings({
+          name,
+          room,
         });
-      }
 
-      setUserSettings({
-        name,
-        room,
+        navigate('/chat');
       });
-
-      navigate('/chat');
-    });
+    }
   };
 
   return (
