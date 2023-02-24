@@ -1,4 +1,10 @@
-import { createContext, SetStateAction, useState } from 'react';
+import {
+  createContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+} from 'react';
 
 import * as S from './styles';
 
@@ -9,11 +15,11 @@ type Snackbar = {
 
 type ContextValues = {
   snackbar: Snackbar;
-  setSnackbar: React.Dispatch<SetStateAction<Snackbar>>;
+  setSnackbar: Dispatch<SetStateAction<Snackbar>>;
 };
 
 type Props = {
-  children: JSX.Element;
+  children: ReactNode;
 };
 
 const initialValues = {

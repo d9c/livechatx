@@ -1,4 +1,11 @@
-import { createContext, SetStateAction, useState, useEffect } from 'react';
+import {
+  createContext,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+} from 'react';
 import io, { Socket } from 'socket.io-client';
 
 type User = {
@@ -9,13 +16,13 @@ type User = {
 type ContextValues = {
   socket: Socket | undefined;
   userSettings: User;
-  setUserSettings: React.Dispatch<SetStateAction<User>>;
+  setUserSettings: Dispatch<SetStateAction<User>>;
   userList: User[];
-  setUserList: React.Dispatch<SetStateAction<User[]>>;
+  setUserList: Dispatch<SetStateAction<User[]>>;
 };
 
 type Props = {
-  children: JSX.Element;
+  children: ReactNode;
 };
 
 const initialValues = {
@@ -29,7 +36,7 @@ const initialValues = {
   setUserList: () => {},
 };
 
-const socket: Socket = io('https://livechat.backend.up.railway.app');
+const socket = io('https://livechat.backend.up.railway.app');
 
 export const ChatContext = createContext<ContextValues>(initialValues);
 
