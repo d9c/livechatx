@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useState,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  ReactNode,
-} from 'react';
+import { createContext, useState, useEffect } from 'react';
 import io, { Socket } from 'socket.io-client';
 
 type User = {
@@ -16,13 +9,13 @@ type User = {
 type ContextValues = {
   socket: Socket | undefined;
   userSettings: User;
-  setUserSettings: Dispatch<SetStateAction<User>>;
+  setUserSettings: React.Dispatch<React.SetStateAction<User>>;
   userList: User[];
-  setUserList: Dispatch<SetStateAction<User[]>>;
+  setUserList: React.Dispatch<React.SetStateAction<User[]>>;
 };
 
 type Props = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 const initialValues = {
