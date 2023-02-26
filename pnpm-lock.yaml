@@ -6,6 +6,7 @@ specifiers:
   '@mui/icons-material': ^5.11.9
   '@mui/material': ^5.11.10
   '@types/node': 18.14.1
+  '@types/nprogress': ^0.2.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@types/styled-components': ^5.1.26
@@ -13,6 +14,7 @@ specifiers:
   eslint-config-next: 13.2.1
   framer-motion: ^10.0.0
   next: 13.2.1
+  nprogress: ^0.2.0
   react: 18.2.0
   react-dom: 18.2.0
   socket.io-client: ^4.6.1
@@ -26,6 +28,7 @@ dependencies:
   '@mui/material': 5.11.10_xqeqsl5kvjjtyxwyi3jhw3yuli
   framer-motion: 10.0.0_biqbaboplfbrettd7655fr4n2y
   next: 13.2.1_biqbaboplfbrettd7655fr4n2y
+  nprogress: 0.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   socket.io-client: 4.6.1
@@ -33,6 +36,7 @@ dependencies:
 
 devDependencies:
   '@types/node': 18.14.1
+  '@types/nprogress': 0.2.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@types/styled-components': 5.1.26
@@ -739,6 +743,10 @@ packages:
 
   /@types/node/18.14.1:
     resolution: {integrity: sha512-QH+37Qds3E0eDlReeboBxfHbX9omAcBCXEzswCu6jySP642jiM3cYSIkU/REqwhCUqXdonHFuBfJDiAJxMNhaQ==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -2296,6 +2304,10 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: false
 
   /object-assign/4.1.1:
