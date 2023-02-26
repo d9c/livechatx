@@ -1,5 +1,4 @@
-export const dark = {
-  title: 'dark',
+export const DarkTheme = {
   background: '#0b0b0b',
   text: '#ffffff',
   border: {

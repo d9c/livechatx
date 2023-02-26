@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { ThemeType } from '../types/themeType';
+import { type Theme } from '@/types/theme';
 
 const styled = { createGlobalStyle };
 
 type Props = {
-  theme: ThemeType;
+  theme: Theme;
 };
 
 export const GlobalStyle = styled.createGlobalStyle<Props>`

@@ -1,17 +1,19 @@
+'use client';
+
 import { useContext, useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-import { Message } from '../Message';
+import { Message } from './Message';
 
-import { ChatContext } from '../../contexts/ChatContext';
-import { SnackbarContext } from '../../contexts/SnackbarContext';
+import { ChatContext } from '@/contexts/ChatContext';
+import { SnackbarContext } from '@/contexts/SnackbarContext';
 
-import { MessageType } from '../../types/messageType';
+import { Message as MessageType } from '@/types/message';
 
 import * as S from './styles';
 
-export const Chat = () => {
+export const ChatBox = () => {
   const { socket, userSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
@@ -20,11 +22,11 @@ export const Chat = () => {
   const messageRef = useRef<HTMLInputElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     if (!userSettings.name || !userSettings.room) {
-      return navigate('/');
+      return router.push('/');
     }
 
     socket?.on('newMessage', (message: MessageType) => {

@@ -1,5 +1,4 @@
-export type ThemeType = {
-  title: string;
+export type Theme = {
   background: string;
   text: string;
   border: {

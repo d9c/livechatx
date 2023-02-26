@@ -1,20 +1,22 @@
+'use client';
+
 import { useContext, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-import { ChatContext } from '../../contexts/ChatContext';
-import { SnackbarContext } from '../../contexts/SnackbarContext';
+import { ChatContext } from '@/contexts/ChatContext';
+import { SnackbarContext } from '@/contexts/SnackbarContext';
 
 import * as S from './styles';
 
-export const JoinRoom = () => {
+export const Join = () => {
   const { socket, setUserSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const roomRef = useRef<HTMLInputElement>(null);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +38,7 @@ export const JoinRoom = () => {
           room,
         });
 
-        navigate('/chat');
+        router.push('/chat');
       });
     }
   };

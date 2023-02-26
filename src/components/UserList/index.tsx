@@ -1,7 +1,9 @@
+'use client';
+
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
 
-import { ChatContext } from '../../contexts/ChatContext';
+import { ChatContext } from '@/contexts/ChatContext';
 
 import * as S from './styles';
 
