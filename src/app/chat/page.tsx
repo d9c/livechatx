@@ -1,29 +1,28 @@
 'use client';
 
-import styled from 'styled-components';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { ChatContext } from '@/contexts/ChatContext';
 
 import { ChatBox } from '@/components/ChatBox';
 import { UserList } from '@/components/UserList';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 65%;
-  height: 100%;
-
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    width: 100%;
-    padding: 10px;
-  }
-`;
+import * as S from './styles';
 
 export default function Chat() {
+  const { userSettings } = useContext(ChatContext);
+
+  const router = useRouter();
+
+  if (!userSettings.name || !userSettings.room) {
+    return <S.Button onClick={() => router.push('/')}>Join a Room</S.Button>;
+  }
+
   return (
-    <Wrapper>
+    <S.Wrapper>
       <ChatBox />
       <UserList />
-    </Wrapper>
+    </S.Wrapper>
   );
 }

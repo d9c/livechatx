@@ -1,8 +1,8 @@
 'use client';
 
 import { useContext, useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import NProgress from 'nprogress';
 
 import { Message } from './Message';
 
@@ -22,12 +22,8 @@ export const ChatBox = () => {
   const messageRef = useRef<HTMLInputElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
 
-  const router = useRouter();
-
   useEffect(() => {
-    if (!userSettings.name || !userSettings.room) {
-      return router.push('/');
-    }
+    NProgress.done();
 
     socket?.on('newMessage', (message: MessageType) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);

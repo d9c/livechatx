@@ -3,6 +3,7 @@
 import { useContext, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import NProgress from 'nprogress';
 
 import { ChatContext } from '@/contexts/ChatContext';
 import { SnackbarContext } from '@/contexts/SnackbarContext';
@@ -25,12 +26,16 @@ export const Join = () => {
     const room = roomRef.current?.value.trim();
 
     if (name && room) {
+      NProgress.start();
+
       socket?.emit('joinRoom', { name, room }, (error: string) => {
         if (error) {
-          return setSnackbar({
+          setSnackbar({
             open: true,
             message: error,
           });
+          NProgress.done();
+          return;
         }
 
         setUserSettings({

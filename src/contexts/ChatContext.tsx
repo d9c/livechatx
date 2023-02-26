@@ -36,7 +36,9 @@ const socket = io('https://livechat.backend.up.railway.app');
 export const ChatContext = createContext<ContextValues>(initialValues);
 
 export const ChatContextProvider = ({ children }: Props) => {
-  const [userSettings, setUserSettings] = useState(initialValues.userSettings);
+  const [userSettings, setUserSettings] = useState<User>(
+    initialValues.userSettings
+  );
   const [userList, setUserList] = useState<User[]>(initialValues.userList);
 
   useEffect(() => {

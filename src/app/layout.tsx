@@ -1,19 +1,17 @@
 'use client';
 
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+
+import StyledComponentsRegistry from '@/lib/registry';
 
 import { ChatContextProvider } from '@/contexts/ChatContext';
 import { SnackbarContextProvider } from '@/contexts/SnackbarContext';
 
 import { DarkTheme } from '@/styles/themes/dark';
 import { GlobalStyle } from '@/styles/global';
+import '@/styles/nprogress.css';
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
+import * as S from './layout.styles';
 
 export default function RootLayout({
   children,
@@ -23,14 +21,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeProvider theme={DarkTheme}>
-          <ChatContextProvider>
-            <SnackbarContextProvider>
-              <Wrapper>{children}</Wrapper>
-            </SnackbarContextProvider>
-          </ChatContextProvider>
-          <GlobalStyle />
-        </ThemeProvider>
+        <StyledComponentsRegistry>
+          <ThemeProvider theme={DarkTheme}>
+            <ChatContextProvider>
+              <SnackbarContextProvider>
+                <S.Wrapper>{children}</S.Wrapper>
+              </SnackbarContextProvider>
+            </ChatContextProvider>
+            <GlobalStyle />
+          </ThemeProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
