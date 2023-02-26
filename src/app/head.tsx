@@ -3,7 +3,7 @@
 export default function Head() {
   return (
     <>
-      <title>LiveChat</title>
+      <title>LiveChatX</title>
       <link
         href="https://fonts.googleapis.com/css2?family=Inter"
         rel="stylesheet"
