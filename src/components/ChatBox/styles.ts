@@ -31,7 +31,7 @@ export const Header = styled.div`
 `;
 
 export const Span = styled.span`
-  font-family: 'Inter', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily}, sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;
@@ -104,7 +104,7 @@ export const WriteMessage = styled.div`
 `;
 
 export const TextInput = styled.input`
-  font-family: 'Inter', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily}, sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
 

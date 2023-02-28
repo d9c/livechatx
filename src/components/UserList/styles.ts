@@ -26,7 +26,7 @@ export const Header = styled.div`
 `;
 
 export const Span = styled.span`
-  font-family: 'Inter', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily}, sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 `;

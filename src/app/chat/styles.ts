@@ -20,7 +20,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 4px;
 
-  font-family: 'Inter', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily}, sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
 

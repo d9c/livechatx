@@ -50,14 +50,14 @@ export const Box = styled.div<Props>`
 `;
 
 export const Text = styled.span`
-  font-family: 'Inter', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily}, sans-serif;
   font-size: 14px;
   color: ${(props) => props.theme.text};
   word-break: break-all;
 `;
 
 export const Info = styled.span`
-  font-family: 'Inter', sans-serif;
+  font-family: ${(props) => props.theme.fontFamily}, sans-serif;
   font-size: 12px;
   color: ${(props) => props.theme.text};
 

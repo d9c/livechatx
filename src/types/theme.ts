@@ -1,6 +1,7 @@
 export type Theme = {
   background: string;
   text: string;
+  fontFamily: string;
   border: {
     main: string;
     hover: string;

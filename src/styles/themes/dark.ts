@@ -1,6 +1,14 @@
+import { Inter } from '@next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: '400',
+});
+
 export const DarkTheme = {
   background: '#0b0b0b',
   text: '#ffffff',
+  fontFamily: inter.className.replace('className', 'Inter'),
   border: {
     main: '#333333',
     hover: '#ffffff',

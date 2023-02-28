@@ -7,7 +7,7 @@ export const MuiSnackbar = styled(Snackbar)`
       background-color: #ffffff;
     }
     .MuiSnackbarContent-message {
-      font-family: 'Inter', sans-serif;
+      font-family: ${(props) => props.theme.fontFamily}, sans-serif;
       color: #000000;
     }
   }
