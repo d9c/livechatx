@@ -3,6 +3,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  env: {
+    BACKEND_URL: process.env.BACKEND_URL,
+  },
 };
 
 module.exports = nextConfig;

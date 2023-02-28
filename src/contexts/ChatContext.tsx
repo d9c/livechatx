@@ -31,7 +31,7 @@ const initialValues = {
   setUserList: () => {},
 };
 
-const socket = io('https://livechat.backend.up.railway.app');
+const socket = io(process.env.BACKEND_URL);
 
 export const ChatContext = createContext<ContextValues>(initialValues);
 
