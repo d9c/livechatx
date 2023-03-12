@@ -4,12 +4,12 @@ import { useContext, useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import NProgress from 'nprogress';
 
-import { Message } from './Message';
+import { MessageBox } from '../MessageBox';
 
 import { ChatContext } from '@/contexts/ChatContext';
 import { SnackbarContext } from '@/contexts/SnackbarContext';
 
-import { Message as MessageType } from '@/types/message';
+import { Message } from '@/types/Message';
 
 import * as S from './styles';
 
@@ -17,7 +17,7 @@ export const ChatBox = () => {
   const { socket, userSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
-  const [messageList, setMessageList] = useState<MessageType[]>([]);
+  const [messageList, setMessageList] = useState<Message[]>([]);
 
   const messageRef = useRef<HTMLInputElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
@@ -25,7 +25,7 @@ export const ChatBox = () => {
   useEffect(() => {
     NProgress.done();
 
-    socket?.on('newMessage', (message: MessageType) => {
+    socket?.on('newMessage', (message: Message) => {
       setMessageList((prevMessageList) => [...prevMessageList, message]);
     });
 
@@ -86,7 +86,7 @@ export const ChatBox = () => {
             key={index}
             $isSent={message.name === userSettings.name ? true : false}
           >
-            <Message
+            <MessageBox
               message={message}
               $isSent={message.name === userSettings.name ? true : false}
             />

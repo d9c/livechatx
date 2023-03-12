@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Theme as ThemeType } from '@/types/theme';
+import { Theme as ThemeType } from '@/types/Theme';
 
 type Props = {
   theme: ThemeType;

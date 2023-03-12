@@ -1,13 +1,13 @@
-import { Message as MessageType } from '@/types/message';
+import { Message } from '@/types/Message';
 
 import * as S from './styles';
 
 type Props = {
-  message: MessageType;
+  message: Message;
   $isSent: boolean;
 };
 
-export const Message = ({ message, $isSent }: Props) => {
+export const MessageBox = ({ message, $isSent }: Props) => {
   const linkify = (text: string) => {
     const regex = /(https?:\/\/[^\s]+)/g;
 
