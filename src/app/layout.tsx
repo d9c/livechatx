@@ -1,17 +1,13 @@
-'use client';
-
-import { ThemeProvider } from 'styled-components';
+import Providers from './providers';
 
 import StyledComponentsRegistry from '@/lib/registry';
 
-import { ChatContextProvider } from '@/contexts/ChatContext';
-import { SnackbarContextProvider } from '@/contexts/SnackbarContext';
-
-import { DarkTheme } from '@/styles/themes/dark';
-import { GlobalStyle } from '@/styles/global';
-import '@/styles/nprogress.css';
-
-import * as S from './layout.styles';
+export const metadata = {
+  title: 'LiveChatX',
+  icons: {
+    shortcut: '/favicon.png',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -22,14 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
-          <ThemeProvider theme={DarkTheme}>
-            <ChatContextProvider>
-              <SnackbarContextProvider>
-                <S.Wrapper>{children}</S.Wrapper>
-              </SnackbarContextProvider>
-            </ChatContextProvider>
-            <GlobalStyle />
-          </ThemeProvider>
+          <Providers>{children}</Providers>
         </StyledComponentsRegistry>
       </body>
     </html>
