@@ -1,7 +1,7 @@
 'use client';
 
-import { useContext, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useContext, useRef, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import NProgress from 'nprogress';
 
@@ -14,10 +14,19 @@ export const Join = () => {
   const { socket, setUserSettings } = useContext(ChatContext);
   const { setSnackbar } = useContext(SnackbarContext);
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const nameRef = useRef<HTMLInputElement>(null);
   const roomRef = useRef<HTMLInputElement>(null);
 
-  const router = useRouter();
+  useEffect(() => {
+    const roomId = searchParams.get('room');
+
+    if (roomId && roomRef.current) {
+      roomRef.current.value = roomId;
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
