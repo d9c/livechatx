@@ -48,7 +48,7 @@ export const ChatBox = () => {
       socket?.off('userJoined');
       socket?.off('userLeft');
     };
-  }, []);
+  }, [socket, setSnackbar]);
 
   useEffect(() => {
     divRef.current?.scrollIntoView({ behavior: 'smooth' });
