@@ -6,19 +6,19 @@ const inter = Inter({
 });
 
 export const DarkTheme = {
-  background: '#0b0b0b',
-  text: '#ffffff',
+  background: '#000',
+  text: '#FFF',
   fontFamily: inter.className.replace('className', 'Inter'),
   border: {
-    main: '#333333',
-    hover: '#ffffff',
+    main: '#333',
+    hover: '#FFF',
   },
   button: {
-    main: '#333333',
+    main: '#333',
     hover: 'rgba(51, 51, 51, 0.5)',
   },
   message: {
-    sent: '#3d3d3d',
-    received: '#1f1f1f',
+    sent: '#3D3D3D',
+    received: '#1F1F1F',
   },
 };
