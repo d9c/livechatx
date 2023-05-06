@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Theme as ThemeType } from '@/types/Theme';
+import type { Theme } from '@/types/theme';
 
 type Props = {
-  theme: ThemeType;
+  theme: Theme;
   $isSent: boolean;
 };
 

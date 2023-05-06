@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import NProgress from 'nprogress';
 
-import { ChatContext } from '@/contexts/ChatContext';
-import { SnackbarContext } from '@/contexts/SnackbarContext';
+import { ChatContext } from '@/contexts/chat-context';
+import { SnackbarContext } from '@/contexts/snackbar-context';
 
 import * as S from './styles';
 

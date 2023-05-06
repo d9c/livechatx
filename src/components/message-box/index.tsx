@@ -1,4 +1,4 @@
-import { Message } from '@/types/Message';
+import type { Message } from '@/types/message';
 
 import * as S from './styles';
 

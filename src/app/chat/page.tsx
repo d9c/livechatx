@@ -3,10 +3,10 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { ChatContext } from '@/contexts/ChatContext';
+import { ChatContext } from '@/contexts/chat-context';
 
-import { ChatBox } from '@/components/ChatBox';
-import { UserList } from '@/components/UserList';
+import { ChatBox } from '@/components/chat-box';
+import { UserList } from '@/components/user-list';
 
 import * as S from './styles';
 

@@ -4,12 +4,12 @@ import { useContext, useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import NProgress from 'nprogress';
 
-import { MessageBox } from '../MessageBox';
+import { MessageBox } from '../message-box';
 
-import { ChatContext } from '@/contexts/ChatContext';
-import { SnackbarContext } from '@/contexts/SnackbarContext';
+import { ChatContext } from '@/contexts/chat-context';
+import { SnackbarContext } from '@/contexts/snackbar-context';
 
-import { Message } from '@/types/Message';
+import type { Message } from '@/types/message';
 
 import * as S from './styles';
 

@@ -3,7 +3,7 @@
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
 
-import { ChatContext } from '@/contexts/ChatContext';
+import { ChatContext } from '@/contexts/chat-context';
 
 import * as S from './styles';
 

@@ -2,8 +2,8 @@
 
 import styled, { ThemeProvider } from 'styled-components';
 
-import { ChatContextProvider } from '@/contexts/ChatContext';
-import { SnackbarContextProvider } from '@/contexts/SnackbarContext';
+import { ChatContextProvider } from '@/contexts/chat-context';
+import { SnackbarContextProvider } from '@/contexts/snackbar-context';
 
 import { DarkTheme } from '@/styles/themes/dark';
 import { GlobalStyle } from '@/styles/global';
